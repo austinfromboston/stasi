@@ -1,0 +1,9 @@
+.upload.form
+  - form_for @ticket_data_import, :html => { :multipart => true }  do |f|
+    %p
+      = f.label :uploaded_data, "Upload database dump"
+      = f.file_field :uploaded_data
+    %p.submit
+      = f.submit "Upload"
+
+

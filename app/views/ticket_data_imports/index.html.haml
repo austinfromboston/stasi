@@ -1,0 +1,10 @@
+.index.tdi
+  %ul
+    - @ticket_data_imports.each do |import|
+      %li
+        = link_to "I#{import.id}", ticket_data_import_path(import)
+        .file
+          Uploaded 
+          = import.filename
+        .size
+          = "%0.2f MB" % ( import.size.to_f / 1.megabyte )
