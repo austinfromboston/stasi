@@ -1,5 +1,6 @@
 log/*
-db/*sqlite3
+db/*.sqlite3
 config/mongrel_cluster.yml
 tmp
 config/database.yml
+public/ticket_data_imports
