@@ -73,3 +73,7 @@ def describe_rake_task(task_name, filename, &block)
     instance_eval(&block)
   end
 end
+def load_ticket_test_schema
+  importer = RadicalDesigns::MysqlDumpImporter.new('tickets_test')
+  importer.process('spec/fixtures/tickets_test.sql.gz')
+end
