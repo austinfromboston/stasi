@@ -1,8 +1,8 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe HelpTicket do
+describe Ticket do
   before do
-    @help_ticket = create_help_ticket
+    @ticket = create_ticket
   end
 end
 

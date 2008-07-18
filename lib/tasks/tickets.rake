@@ -26,5 +26,10 @@ namespace :db do
 
       @importer.verify_db
     end
+  
+    desc "move new records into local db"
+    task :convert do
+      RadicalDesigns::HelpImporter.new.convert
+    end
   end
 end

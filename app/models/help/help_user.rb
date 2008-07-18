@@ -5,6 +5,8 @@ class HelpUser < HelpData
   has_many :help_tickets,     :foreign_key => 'userid'
   has_many :help_user_emails, :foreign_key => 'userid'
 
+  has_one :contact
+
   LOCAL_KEYS = {
     :name => 'fullname',
     :email => 'most_recent_email',

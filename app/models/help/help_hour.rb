@@ -4,6 +4,8 @@ class HelpHour < HelpData
   belongs_to :help_staffer, :foreign_key => 'forstaffid'
   belongs_to :help_ticket, :foreign_key => 'ticketid'
 
+  has_one :hour_log
+
   LOCAL_KEYS = {
     :help_hour_id => 'timetrackid',
     :minutes      => 'timespent',
