@@ -3,6 +3,7 @@ class HelpStaffer < HelpData
   set_primary_key 'staffid'
 
   has_many :help_hours, :foreign_key => 'forstaffid'
+  has_many :help_posts, :foreign_key => 'staffid'
   has_one :agent
 
   LOCAL_KEYS = { 

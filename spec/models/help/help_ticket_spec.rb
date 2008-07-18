@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe HelpTicket do
   before do
+    HelpTicket.delete_all
+    Ticket.delete_all
     @ticket = create_help_ticket
   end
   it "has hours" do
@@ -18,6 +20,26 @@ describe HelpTicket do
     ht = Ticket.create(@ticket.local_attributes)
     new_help_ticket = HelpTicket.find @ticket.id
     new_help_ticket.ticket.should == ht
+  end
+
+  it "summarizes multiple posts" do
+    @ticket.help_posts.create :contents => 'find this word'
+    tt = Ticket.create(@ticket.local_attributes)
+    tt.messages.should match(/word/)
+  end
+
+  it "counts the posts" do
+    @ticket.help_posts.create( [ {:contents => 'find this word'},
+                                { :contents => 'find this bird' },
+                                { :contents => 'find this curd' } ] )
+    tt = Ticket.create(@ticket.local_attributes)
+    tt.messages_count.should == 3
+  end
+
+  it "reports a status" do
+    @ticket.ticketstatusid = 3 
+    tt = Ticket.create(@ticket.local_attributes)
+    tt.status.should == "closed"
   end
 end
 

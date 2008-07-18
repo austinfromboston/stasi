@@ -2,6 +2,8 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe HelpStaffer do
   before do
+    HelpStaffer.delete_all
+    Agent.delete_all
     @staff = HelpStaffer.new :fullname => "Cherri"
     @staff.email = "john@do.com"
   end

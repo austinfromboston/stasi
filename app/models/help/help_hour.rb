@@ -6,14 +6,21 @@ class HelpHour < HelpData
 
   LOCAL_KEYS = {
     :help_hour_id => 'timetrackid',
-    :minutes => 'timespent',
-    :agent_id => 'agent_id',
-    :notes => 'notes',
-    :ticket_id => 'ticket_id'
+    :minutes      => 'timespent',
+    :agent_id     => 'agent_id',
+    :notes        => 'notes',
+    :ticket_id    => 'ticket_id',
+    :source       => 'source',
+    :billing_type => 'billing_type'
   }
 
-  def local_attributes
-    super.merge( :source => 'help_system', :billing_type => 'support' )
+
+  def source
+    "help_system"
+  end
+
+  def billing_type
+    'support'
   end
 
   def agent_id
