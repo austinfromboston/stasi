@@ -1,7 +1,7 @@
 .agent
   = hour_log.agent.name if hour_log.agent
 .time
-  = "%0.2f" % ( hour_log.minutes.minutes.to_f / 1.hours )
+  = "%0.2f" % to_hours( hour_log.minutes )
   hours
 - if hour_log.ticket and hour_log.ticket.contact
   .client
