@@ -10,12 +10,12 @@ class Project < ActiveRecord::Base
     return true unless data && !data.empty?
     data.each do |contact|
       next if contact[:preamp_client_id] and Contact.find_by_contact_type_and_preamp_client_id( contact[:contact_type], contact[:preamp_client_id] )
-      #unless existing = Contact.find_by_email(contact[:email])
+      unless existing = Contact.find_by_email(contact[:email])
         contacts.build contact
-      #  next
-      #end
-      #existing.attributes = contact
-      #contacts << existing
+        next
+      end
+      existing.attributes = contact
+      contacts << existing
     end 
   end
 =end

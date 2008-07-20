@@ -24,7 +24,8 @@ module RadicalDesigns
         puts "found #{sources.size}"
         sources.each do |source|
           next if local_class.send( "find_by_#{source_item}_id", source.id )
-          local = Kernel.const_get( local_item.to_s.classify).create!( source.local_attributes )
+          local = Kernel.const_get( local_item.to_s.classify).new( source.local_attributes )
+          local.save!
         end
       end
       Ticket.record_timestamps = true

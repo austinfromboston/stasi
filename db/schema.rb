@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(:version => 20080720055425) do
     t.string  "email"
     t.string  "phone"
     t.string  "login"
-    t.integer "help_staffer_id"
+    t.integer "help_staffer_id", :limit => 11
   end
 
   create_table "agents_tickets", :id => false, :force => true do |t|
-    t.integer "agent_id"
-    t.integer "ticket_id"
+    t.integer "agent_id",  :limit => 11
+    t.integer "ticket_id", :limit => 11
   end
 
   create_table "contacts", :force => true do |t|
@@ -30,26 +30,26 @@ ActiveRecord::Schema.define(:version => 20080720055425) do
     t.string   "last_name"
     t.string   "email"
     t.string   "phone"
-    t.integer  "project_id"
-    t.integer  "help_user_id"
+    t.integer  "project_id",       :limit => 11
+    t.integer  "help_user_id",     :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "contact_type"
-    t.integer  "preamp_client_id"
+    t.integer  "preamp_client_id", :limit => 11
   end
 
   create_table "hour_logs", :force => true do |t|
-    t.integer  "agent_id"
-    t.integer  "ticket_id"
-    t.integer  "minutes"
-    t.integer  "help_hour_id"
+    t.integer  "agent_id",       :limit => 11
+    t.integer  "ticket_id",      :limit => 11
+    t.integer  "minutes",        :limit => 11
+    t.integer  "help_hour_id",   :limit => 11
     t.string   "source"
     t.string   "billing_type"
     t.string   "project_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "preamp_hour_id"
+    t.integer  "preamp_hour_id", :limit => 11
   end
 
   create_table "projects", :force => true do |t|
@@ -60,21 +60,21 @@ ActiveRecord::Schema.define(:version => 20080720055425) do
     t.datetime "updated_at"
     t.string   "status"
     t.string   "preamp_status"
-    t.integer  "preamp_client_id"
+    t.integer  "preamp_client_id", :limit => 11
   end
 
   create_table "ticket_data_imports", :force => true do |t|
     t.string   "filename"
     t.string   "content_type"
-    t.integer  "size"
+    t.integer  "size",         :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tickets", :force => true do |t|
-    t.integer  "contact_id"
-    t.integer  "help_ticket_id"
-    t.integer  "messages_count"
+    t.integer  "contact_id",     :limit => 11
+    t.integer  "help_ticket_id", :limit => 11
+    t.integer  "messages_count", :limit => 11
     t.string   "subject"
     t.string   "status"
     t.text     "messages"

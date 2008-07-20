@@ -1,6 +1,9 @@
 class PreampHour < PreampData
   set_table_name 'billing_task'
   belongs_to :preamp_client, :foreign_key => 'client_id'
+  def self.inheritance_column
+    nil
+  end
 
   LOCAL_KEYS = {
     :notes        => 'summary',
