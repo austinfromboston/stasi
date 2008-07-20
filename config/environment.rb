@@ -36,7 +36,7 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
-  config.load_paths += %W( #{RAILS_ROOT}/app/models/help )
+  config.load_paths += %W( #{RAILS_ROOT}/app/models/help #{RAILS_ROOT}/app/models/preamp )
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
