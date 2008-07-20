@@ -1,0 +1,7 @@
+.index.hour_logs
+  = will_paginate @hour_logs
+  = render :partial => 'shared/search_by_date'
+
+  %ul
+    = render :partial => 'hour_logs/list/hour_log', :collection => @hour_logs
+  = will_paginate @hour_logs

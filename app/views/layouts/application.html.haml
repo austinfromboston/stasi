@@ -4,8 +4,12 @@
     = @controller.action_name.titleize
     \-
     = @controller.controller_name.titleize
+  = stylesheet_link_tag 'application'
 %body
   #header
+    = render 'layouts/menu'
   #main
     = yield
   #footer
+
+  = yield :javascript

@@ -1,0 +1,16 @@
+
+- if ticket.contact
+  .contact
+    %label From
+    = ticket.contact.name
+.date
+  = ticket.created_at.strftime( "%Y-%m-%d" )
+.messages
+  = ticket.messages_count
+  messages
+.status
+  = ticket.status
+.list.agents
+  Responders:
+  %ul 
+    = render :partial => 'agents/list/agent', :collection => ticket.agents

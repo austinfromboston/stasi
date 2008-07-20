@@ -13,7 +13,9 @@ class HelpHour < HelpData
     :notes        => 'notes',
     :ticket_id    => 'ticket_id',
     :source       => 'source',
-    :billing_type => 'billing_type'
+    :billing_type => 'billing_type',
+    :created_at       => 'created_at',
+    :updated_at       => 'created_at'
   }
 
 
@@ -26,10 +28,14 @@ class HelpHour < HelpData
   end
 
   def agent_id
-    help_staffer.agent.id if help_staffer and help_staffer.agent
+    Agent.find_by_help_staffer_id( help_staffer.id ).id if help_staffer
   end
 
   def ticket_id
-    help_ticket.ticket.id if help_ticket and help_ticket.ticket
+    Ticket.find_by_help_ticket_id( help_ticket.id ).id if help_ticket
+  end
+
+  def created_at
+    Time.at( dateline )
   end
 end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20080713220618) do
     t.integer "help_staffer_id"
   end
 
-  create_table "agents_tickets", :force => true do |t|
+  create_table "agents_tickets", :id => false, :force => true do |t|
     t.integer "agent_id"
     t.integer "ticket_id"
   end

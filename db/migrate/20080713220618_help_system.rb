@@ -12,7 +12,7 @@ class HelpSystem < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table "agents_tickets" do |t|
+    create_table "agents_tickets", :id => false do |t|
       t.integer "agent_id", "ticket_id"
     end
 

@@ -10,7 +10,8 @@ class HelpUser < HelpData
   LOCAL_KEYS = {
     :name => 'fullname',
     :email => 'most_recent_email',
-    :phone => 'phone'
+    :phone => 'phone',
+    :help_user_id => 'userid'
   }
 
   def most_recent_email 

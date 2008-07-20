@@ -1,0 +1,19 @@
+#header {
+  clear: both; }
+
+#main_menu {
+  list-style: none;
+  list-position: outside; }
+  #main_menu li {
+    float: left;
+    margin-left: 1em; }
+
+#main {
+  clear: both; }
+
+.pagination {
+  float: right; }
+
+.index .search {
+  float: right;
+  clear: both; }

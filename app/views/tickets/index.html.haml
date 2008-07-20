@@ -1,0 +1,8 @@
+.index.tickets
+  = will_paginate @tickets
+  = render :partial => 'shared/search_by_date'
+
+  %ul
+    = render :partial => 'tickets/list/ticket', :collection => @tickets
+  = will_paginate @tickets
+

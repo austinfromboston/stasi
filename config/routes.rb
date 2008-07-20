@@ -40,4 +40,9 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/:action/:id.:format'
   map.resources :ticket_data_imports
   map.root :ticket_data_imports
+
+  map.resources :agents
+  map.resources :contacts
+  map.resources :tickets
+  map.resources :hour_logs
 end

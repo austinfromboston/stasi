@@ -1,0 +1,5 @@
+- form_tag '', :method => :get, :class => 'search' do
+  = select_tag "query[month]",  options_for_select( months, ( params[:query] ? params[:query]['month'] : nil ))
+  = select_tag 'query[year]',   options_for_select( recent_years, ( params[:query] ? params[:query]['year'] : nil )) 
+  = submit_tag "Search"
+

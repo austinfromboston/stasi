@@ -12,6 +12,9 @@ class HelpData < ActiveRecord::Base
 
   def local_attributes
     local_keys = self.class.const_get(:LOCAL_KEYS)
-    Hash[ *local_keys.map{ |local_key, my_key| [ local_key, self.send( my_key ) ] }.compact.flatten ]
+    local_keys.inject({}) do |memo, ( local_key, my_key ) |
+      memo.merge local_key => self.send( my_key )
+    end
+    #Hash[ *local_keys.map{ |local_key, my_key| [ local_key, self.send( my_key ) ] }.compact.flatten ]
   end
 end
