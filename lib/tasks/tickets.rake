@@ -29,7 +29,7 @@ namespace :db do
   
     desc "move new records into local db"
     task :convert do
-      RadicalDesigns::HelpImporter.new.convert
+      RadicalDesigns::DumpConverter.new.convert(:help)
     end
   end
 end

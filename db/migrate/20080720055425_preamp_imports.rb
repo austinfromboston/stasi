@@ -11,5 +11,13 @@ class PreampImports < ActiveRecord::Migration
   end
 
   def self.down
+    remove_column :hour_logs, :preamp_hour_id
+
+    remove_column :projects, :preamp_client_id
+    remove_column :projects, :preamp_status
+    remove_column :projects, :status
+
+    remove_column :contacts, :preamp_client_id
+    remove_column :contacts, :contact_type
   end
 end

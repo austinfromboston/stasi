@@ -1,5 +1,6 @@
 class PreampHour < PreampData
   set_table_name 'billing_task'
+  belongs_to :preamp_client, :foreign_key => 'client_id'
 
   LOCAL_KEYS = {
     :notes        => 'summary',
@@ -8,7 +9,8 @@ class PreampHour < PreampData
     :agent_id     => 'find_named_staff',
     :minutes      => 'minutes',
     :created_at   => 'parsed_date',
-    :project_id   => 'project_id'
+    :project_id   => 'project_id',
+    :preamp_hour_id => 'id'
   }
 
   def source
@@ -16,13 +18,13 @@ class PreampHour < PreampData
   end
 
   def parsed_date
-    Time.parse( date )
+    date ? date.to_time : Time.now
   end
 
   def summary 
-    return name if details.empty?
+    return name if details.blank?
     "#{name}\n" +
-    "("-" * 30)}\n" +
+    "#{("-" * 30)}\n" +
     details
   end
 
@@ -31,7 +33,7 @@ class PreampHour < PreampData
   end
 
   def find_named_staff
-    Agent.find :first, :conditions => [ 'name LIKE ?', staff ]
+    Agent.find :first, :conditions => [ 'name LIKE ?', "%#{staff}%" ]
   end
 
   def project_id
