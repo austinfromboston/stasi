@@ -6,10 +6,15 @@
     = @controller.controller_name.titleize
   = stylesheet_link_tag 'application'
 %body
-  #header
-    = render 'layouts/menu'
-  #main
-    = yield
-  #footer
+  #container
+    #header
+      = render 'layouts/menu'
+      = yield :header
+    #main
+      #action_bar
+        = yield :action_bar
+      #content
+        = yield
+    #footer
 
-  = yield :javascript
+    = yield :javascript

@@ -1,0 +1,9 @@
+.name
+  = project.name
+.organization
+  = project.organization
+.url
+  = project.url
+.contacts
+  %ul
+    = render :partial => 'contacts/list/contact', :collection => project.contacts

@@ -1,0 +1,4 @@
+%ul.projects
+  - active_projects.each do |project|
+    %li.target
+      = link_to project.organization, project_url(project)

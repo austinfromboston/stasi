@@ -1,0 +1,7 @@
+%li
+  - if project_id = project_total.first and project = Project.find( project_id )
+    = project.organization
+  - else
+    unassigned
+  \:
+  = to_hours( project_total.last )

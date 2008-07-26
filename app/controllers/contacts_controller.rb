@@ -2,6 +2,20 @@ class ContactsController < ApplicationController
   make_resourceful do 
     actions :all
   end
+
+  def current_objects
+    search_options = { :order => 'name ASC, email ASC'  }
+    return Contact.all( search_options ) unless params[:query]
+    search = Contact
+    if params[:query] and !params[:query][:project_id].blank?
+      if params[:query][:project_id] == 'unassigned'
+        search = search.unassigned
+      else
+        search = Project.find( params[:query][:project_id] ).contacts
+      end
+    end
+    search.all( search_options )
+  end
 end
 
 

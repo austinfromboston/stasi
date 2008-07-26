@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20080720055425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "contact_type"
+    t.boolean  "billable"
+    t.boolean  "primary"
+    t.boolean  "technical"
+    t.boolean  "deleted"
     t.integer  "preamp_client_id", :limit => 11
   end
 

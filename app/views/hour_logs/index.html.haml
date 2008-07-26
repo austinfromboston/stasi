@@ -1,5 +1,4 @@
 .index.hour_logs
-  = will_paginate @hour_logs
   = render :partial => 'shared/search_by_date'
   .summary
     = current_search.count
@@ -7,6 +6,10 @@
     = "%0.2f" % to_hours( current_search.sum(:minutes))
     total hours
 
+  %ul.totals
+    = render :partial => 'project_total', :collection => @project_totals
+
+  = will_paginate @hour_logs
   %ul
     = render :partial => 'hour_logs/list/hour_log', :collection => @hour_logs
   = will_paginate @hour_logs

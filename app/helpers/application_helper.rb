@@ -7,4 +7,11 @@ module ApplicationHelper
   def recent_years
     (2006..Time.now.strftime('%Y').to_i).to_a.reverse.map{|yy| yy.to_s }
   end
+
+  def searchable_projects
+    Project.all( :order => 'organization ASC' ).map{ |prj| [ prj.organization[0..40], prj.id ] }.unshift( [ 'Search by Project', nil ], [ 'unassigned', 'unassigned' ] )
+  end
+  def active_projects
+    Project.all :order => 'organization ASC'
+  end
 end

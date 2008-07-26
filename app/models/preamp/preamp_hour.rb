@@ -9,7 +9,7 @@ class PreampHour < PreampData
     :notes        => 'summary',
     :billing_type => 'billing_type',
     :source       => 'source',
-    :agent_id     => 'find_named_staff',
+    :agent        => 'find_named_staff',
     :minutes      => 'minutes',
     :created_at   => 'parsed_date',
     :project_id   => 'project_id',

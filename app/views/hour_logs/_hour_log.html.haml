@@ -6,3 +6,6 @@
 - if hour_log.ticket and hour_log.ticket.contact
   .client
     = hour_log.ticket.contact.name 
+- if hour_log.project
+  .project
+    = hour_log.project.organization

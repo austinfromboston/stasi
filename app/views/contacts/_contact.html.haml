@@ -4,3 +4,9 @@
   = contact.email
 .phone
   = contact.phone
+- if contact.project
+  .project
+    = contact.project.organization
+- if contact.contact_type
+  .meta
+    = contact.contact_type

@@ -1,6 +1,10 @@
 class PreampImports < ActiveRecord::Migration
   def self.up
     add_column :contacts, :contact_type, :string
+    add_column :contacts, :billable, :boolean
+    add_column :contacts, :primary, :boolean
+    add_column :contacts, :technical, :boolean
+    add_column :contacts, :deleted, :boolean
     add_column :contacts, :preamp_client_id, :integer
 
     add_column :projects, :status, :string

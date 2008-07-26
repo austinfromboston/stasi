@@ -1,0 +1,4 @@
+- form_tag '', :method => :get, :class => 'search' do
+  = select_tag "query[project_id]",  options_for_select( searchable_projects, ( params[:query] && params[:query]['project_id'] ? params[:query]['project_id'] : nil ))
+  = submit_tag "Search"
+

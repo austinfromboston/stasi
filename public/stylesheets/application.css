@@ -1,5 +1,7 @@
 #header {
   clear: both; }
+  #header .search {
+    float: right; }
 
 #main_menu {
   list-style: none;
@@ -11,9 +13,13 @@
 #main {
   clear: both; }
 
+#content {
+  float: left; }
+
 .pagination {
   float: right; }
 
-.index .search {
-  float: right;
-  clear: both; }
+
+#action_bar {
+  clear: left;
+  float: left; }
