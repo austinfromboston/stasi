@@ -29,6 +29,7 @@ namespace :db do
   
     desc "move new records into local db"
     task :convert do
+      HelpUser.all.each { |hu| hu.destroy unless hu.valid? }
       RadicalDesigns::DumpConverter.new.convert(:help)
     end
   end

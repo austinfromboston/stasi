@@ -9,9 +9,10 @@ module ApplicationHelper
   end
 
   def searchable_projects
-    Project.all( :order => 'organization ASC' ).map{ |prj| [ prj.organization[0..40], prj.id ] }.unshift( [ 'Search by Project', nil ], [ 'unassigned', 'unassigned' ] )
+    active_projects.map{ |prj| [ prj.organization[0..40], prj.id ] }.unshift( [ 'Search by Project', nil ], [ 'unassigned', 'unassigned' ] )
   end
   def active_projects
-    Project.all :order => 'organization ASC'
+    Project.all( :order => 'organization ASC' )
   end
+
 end

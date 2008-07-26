@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   end
 
   def current_objects
-    search_options = { :order => 'name ASC, email ASC'  }
+    search_options = { :order => 'name ASC, email ASC', :include => :tickets  }
     return Contact.all( search_options ) unless params[:query]
     search = Contact
     if params[:query] and !params[:query][:project_id].blank?

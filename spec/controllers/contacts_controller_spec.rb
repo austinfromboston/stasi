@@ -18,5 +18,6 @@ describe ContactsController do
       end
     end
   end
+
 end
 

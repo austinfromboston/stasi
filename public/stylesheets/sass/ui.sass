@@ -1,0 +1,21 @@
+@import settings
+#main
+  #content
+    .preview.active
+      :width 500px
+      :height 300px
+      :white-space pre
+      :overflow scroll
+
+.list_toolbar
+  :list-style none
+  :padding 0
+  .delete
+    input
+      :background url(/images/actions/delete.png)
+      :border 0
+      :padding 0 0 0 16px
+      :cursor pointer
+      :background-repeat no-repeat
+      &:hover
+        :background-color = !toolbar_hover

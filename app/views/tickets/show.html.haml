@@ -1,0 +1,5 @@
+.show.ticket
+  = render :partial => 'ticket', :object => @ticket
+  = @ticket.summary
+  %pre 
+    = @ticket.messages

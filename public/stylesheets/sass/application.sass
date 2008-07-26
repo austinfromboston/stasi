@@ -1,24 +1,33 @@
+#container
 #header
   :clear both
   .search
     :float right
 
+li.standard
+  :padding-bottom 20px
+  h4
+    :margin 0 4px 0 2px
+
 #main_menu
   :list-style none
   :list-position outside
   li
-    :float left
+    :display -moz-inline-box
+    :display inline-block
     :margin-left 1em
+
 #main
   :clear both
 
-#content
-  :float left
-
 .pagination
   :float right
-.index
 
-#action_bar
+#sidebar
   :clear left
-  :float left
+  :position fixed
+  :left 700px 
+  :height 600px
+  :top 50px
+  :overflow-y scroll
+  :overflow-x hidden

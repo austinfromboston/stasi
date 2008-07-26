@@ -1,4 +1,25 @@
-%ul.projects
+.menu
+  = text_field_tag :search_projects, "Find Project", :id => 'find_projects'
+%ul#project_menu
+  %li.target
+    = link_to 'Unassigned Contacts', contacts_url(:query => { :project_id => 'unassigned'})
   - active_projects.each do |project|
     %li.target
-      = link_to project.organization, project_url(project)
+      = link_to project.organization[0..40], contacts_url(:query => { :project_id => project }), :title => project.organization.downcase
+
+- content_for :javascript_onload do
+  :plain
+    $('#find_projects').focus( function( ev ) { 
+      $(ev.target).val( '' ); 
+      $('#project_menu').removeClass('searching');
+    } );
+    $('#find_projects').keyup( function( ev ) { 
+      var search_name  = $(ev.target).val();
+      if (search_name.length > 2 ) {
+        $('#project_menu').addClass('searching');
+        $('#project_menu .target a').removeClass('found');
+        $('#project_menu .target a[title*="' + search_name.toLowerCase() +'"]').addClass('found');
+      } else {
+        $('#project_menu').removeClass('searching');
+      }
+    } );

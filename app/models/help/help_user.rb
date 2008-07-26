@@ -7,12 +7,19 @@ class HelpUser < HelpData
 
   has_one :contact
 
+  #help users without a ticket are mostly spam
+  validate :require_tickets
+
   LOCAL_KEYS = {
     :name => 'fullname',
     :email => 'most_recent_email',
     :phone => 'phone',
     :help_user_id => 'userid'
   }
+
+  def require_tickets
+    errors.add( "no help tickets found") if help_tickets.empty?
+  end
 
   def most_recent_email 
     email_record = help_user_emails.find( :first, :order => 'useremailid DESC' )

@@ -10,7 +10,7 @@ class HelpPost < HelpData
     ( help_user.fullname if help_user ) ,
     ( help_staffer.fullname if help_staffer ),
     ( "-" * 20 ),
-    contents].join("\n")
+    contents].join("\n").gsub(/<\/?[^>]*>/,  "")
   end
 
   def date_text

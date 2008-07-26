@@ -1,0 +1,26 @@
+@import settings
+#sidebar
+  :width 200px
+  .menu
+    :position fixed
+  ul
+    :list-style none 
+    :padding-left 0
+    :padding-top 30px
+    :margin 0
+    li.target
+      :margin 8px
+      a
+        :padding 4px
+        :text-decoration none
+        :display block
+        &:hover
+          :background-color = !target_hover
+
+  ul.searching
+    li.target
+      a
+        :display none
+      a.found
+        :background-color = !target_found
+        :display block

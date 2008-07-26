@@ -60,6 +60,7 @@ module FixtureReplacement
   end
 
   attributes_for :help_user do |a|
+    a.help_tickets = [ default_help_ticket ]
   end
 
   attributes_for :help_user_email do |a|

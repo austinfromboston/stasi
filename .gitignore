@@ -4,3 +4,4 @@ config/mongrel_cluster.yml
 tmp
 config/database.yml
 public/ticket_data_imports
+public/stylesheets/*css

@@ -1,8 +1,27 @@
-- content_for :header do
-  = render :partial => 'shared/search_by_project'
 .index.contacts
   %ul
     = render :partial => 'contacts/list/contact', :collection => @contacts
 
-- content_for :action_bar do
+- content_for :sidebar do
   = render :partial => 'projects/toolbar'
+
+- content_for :javascript_onload do
+  :plain
+    //$( '.ticket_preview_toggle' ).click( function(ev) {
+    $( 'ul.tickets' ).click( function(ev) {
+      if( !$(ev.target).hasClass('ticket_preview_toggle')) return true;
+      var preview_display = $( ev.target ).next('.preview');
+      if ( preview_display.html() == '' ) {
+        $.getJSON( $(ev.target).attr('href') + '.json', '', function( data ) {
+          preview_display.html( data.ticket.messages ).addClass('active');
+        } );
+      } else {
+        if(preview_display.is(':visible')) {
+          preview_display.hide();
+        } else {
+          preview_display.show();
+        }
+      }
+ 
+      return false;
+    } );

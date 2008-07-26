@@ -5,16 +5,23 @@
     \-
     = @controller.controller_name.titleize
   = stylesheet_link_tag 'application'
+  = stylesheet_link_tag 'sidebar'
+  = stylesheet_link_tag 'ui'
 %body
   #container
     #header
       = render 'layouts/menu'
       = yield :header
     #main
-      #action_bar
-        = yield :action_bar
       #content
         = yield
+      #sidebar
+        = yield :sidebar
     #footer
 
-    = yield :javascript
+    - if onload_script = yield( :javascript_onload )
+      = javascript_include_tag 'jquery/jquery-1.2.6.js'
+      - javascript_tag do
+        $( function() {
+        = onload_script
+        }) ;
