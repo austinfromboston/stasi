@@ -1,21 +1,22 @@
 %li.standard
-  - if contact.name
-    %h4.name
-      = contact.name
+  .draggable{ :'data-id' => contact.id }
+    - if contact.name
+      %h4.name
+        = contact.name
 
-  .email
-    = contact.email
+    .email
+      = contact.email
 
-  - if contact.phone
-    .phone
-      = contact.phone
+    - if contact.phone
+      .phone
+        = contact.phone
 
-  - if contact.project
     .project
-      = contact.project.organization
+      - if contact.project
+        = contact.project.organization
 
-  = render :partial => 'menu', :locals => { :contact => contact }
-  - if contact.tickets
+  = render :partial => 'contacts/menu', :locals => { :contact => contact }
+  - unless contact.tickets.empty?
     %h4 Tickets Received
     %ul.tickets
       - contact.tickets.each do |ticket|

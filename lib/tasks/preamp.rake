@@ -30,9 +30,11 @@ namespace :db do
     desc "move new records into local db"
     task :convert do
       RadicalDesigns::DumpConverter.new.convert(:preamp)
-      HourLog.all( :conditions => [ 'project_id is ? and ticket_id is not ?',nil,nil ] ).each do |hl|
-        hl.update_attribute( :project_id, hl.ticket.contact.project_id ) if hl.ticket and hl.ticket.contact
-      end
+      HelpUser.relate_imported_contacts_to_projects 
+      Contact.all.each { |c| c.update_project_hour_logs }
+      #HourLog.all( :conditions => [ 'project_id is ? and ticket_id is not ?',nil,nil ] ).each do |hl|
+      #  hl.update_attribute( :project_id, hl.ticket.contact.project_id ) if hl.ticket and hl.ticket.contact
+      #end
     end
   end
 end

@@ -31,6 +31,10 @@ namespace :db do
     task :convert do
       HelpUser.all.each { |hu| hu.destroy unless hu.valid? }
       RadicalDesigns::DumpConverter.new.convert(:help)
+      Contact.grudges.each do |grudge| 
+        possibles = Contact.find_all_by_help_user_id( grudge[:help_user_id] )
+        possibles.each { |ps| ps.destroy if Contact.grudge_match?(ps) }
+      end
     end
   end
 end

@@ -7,6 +7,7 @@ class HelpUser < HelpData
 
   has_one :contact
 
+
   #help users without a ticket are mostly spam
   validate :require_tickets
 
@@ -16,6 +17,17 @@ class HelpUser < HelpData
     :phone => 'phone',
     :help_user_id => 'userid'
   }
+
+  def self.relate_imported_contacts_to_projects
+    preamp_keys = YAML.load_file "#{RAILS_ROOT}/config/imported_contacts_and_projects.yaml"  rescue {}
+    preamp_keys.each do | help_id, preamp_client_id |
+      hcontact = Contact.find_by_help_user_id  help_id
+      project = Project.find_by_preamp_client_id preamp_client_id
+      next unless hcontact && project && hcontact.project_id.nil?
+      hcontact.update_attribute( :project_id, project.id )
+    end
+    
+  end
 
   def require_tickets
     errors.add( "no help tickets found") if help_tickets.empty?

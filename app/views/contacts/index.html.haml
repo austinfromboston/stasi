@@ -7,7 +7,36 @@
 
 - content_for :javascript_onload do
   :plain
-    //$( '.ticket_preview_toggle' ).click( function(ev) {
+    $('.list_toolbar li.delete input').click( function(ev) {
+      //console.log ($(ev.target.form).attr('action') + '.json' )
+      //console.log( { _method: 'delete', authentication_token: $(ev.target.form.elements['authenticity_token']).val() } );
+      if ( confirm('You want to ax them for real?')) {
+        $.post( ($(ev.target.form).attr('action') + '.json' ), { _method: 'delete', authenticity_token: $(ev.target.form.elements['authenticity_token']).val() }, function( data ) {
+          $(ev.target).parents('li.standard').empty();
+        } );
+      }
+      return false;
+    } );
+    $('.draggable').draggable().mousedown( function( ev ) { 
+        $(ev.target).parents('.draggable').addClass('active'); 
+      } ).mouseup( function( ev ) { 
+        $('.draggable').removeClass('active'); 
+      } );
+
+    $('.target').droppable( {
+      accept: '.draggable',
+      hoverClass: 'open',
+      activeClass: 'accepting',
+      drop: function( event, bits) {
+        bits.draggable.addClass('busy');
+        bits.draggable.attr('style', '');
+        var contact_id = bits.draggable.attr('data-id');
+        $.post( '/contacts/'+ contact_id + '/involvements.json', { project_id: $(this).attr('data-id'), authenticity_token: $(this).attr('data-token') }, function( data ) {
+          bits.draggable.find('.project').text( data.contact.project.organization );
+        }, 'json'  );
+        bits.draggable.removeClass('busy');
+      } } );
+
     $( 'ul.tickets' ).click( function(ev) {
       if( !$(ev.target).hasClass('ticket_preview_toggle')) return true;
       var preview_display = $( ev.target ).next('.preview');

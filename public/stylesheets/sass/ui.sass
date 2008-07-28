@@ -19,3 +19,26 @@
       :background-repeat no-repeat
       &:hover
         :background-color = !toolbar_hover
+
+li.target
+  &.accepting
+    a
+      :border 2px solid
+      :border-color = !target_open_border
+  &.open
+    :background-color = !target_hover
+    a
+      :border 2px solid
+      :border-color = !target_open_border
+      :background-color = !target_hover
+
+.hidden
+  :display none
+
+.draggable
+  :width 300px
+  :cursor move
+  &.active
+    :opacity .5
+    :border 3px solid
+    :border-color = !target_found

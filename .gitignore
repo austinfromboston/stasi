@@ -5,3 +5,5 @@ tmp
 config/database.yml
 public/ticket_data_imports
 public/stylesheets/*css
+config/imported*yaml
+config/*grudges*yaml

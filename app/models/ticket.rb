@@ -2,6 +2,7 @@ class Ticket < ActiveRecord::Base
   establish_connection
   belongs_to :contact
   belongs_to :help_ticket
+  has_many :hour_logs
   cattr_reader :per_page
   @@per_page = 100
 

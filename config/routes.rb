@@ -42,7 +42,9 @@ ActionController::Routing::Routes.draw do |map|
   map.root :ticket_data_imports
 
   map.resources :agents
-  map.resources :contacts
+  map.resources :contacts do |contact|
+    contact.resources :involvements
+  end
   map.resources :tickets
   map.resources :hour_logs
   map.resources :projects
