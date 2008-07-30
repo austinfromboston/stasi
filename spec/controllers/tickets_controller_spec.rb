@@ -1,6 +1,9 @@
 require File.dirname(__FILE__ ) + '/../spec_helper'
 
 describe TicketsController do
+  before do
+    stub_authentication
+  end
   describe "pagination" do
     before :all do
       200.times { create_ticket( :created_at => Time.mktime(2006,8,10)) }

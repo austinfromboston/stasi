@@ -1,6 +1,9 @@
 require File.dirname(__FILE__ ) + '/../spec_helper'
 
 describe ContactsController do
+  before do
+    stub_authentication
+  end
 
   describe "GET #index" do
     describe "searching" do

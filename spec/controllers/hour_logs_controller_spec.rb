@@ -1,6 +1,9 @@
 require File.dirname(__FILE__ ) + '/../spec_helper'
 
 describe HourLogsController do
+  before do
+    stub_authentication
+  end
   describe "searching" do
     before do
       HourLog.delete_all

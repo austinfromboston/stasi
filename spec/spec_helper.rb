@@ -78,3 +78,7 @@ def load_ticket_test_schema
   importer = RadicalDesigns::MysqlDumpImporter.new('tickets_test')
   importer.process('spec/fixtures/tickets_test.sql.gz')
 end
+
+def stub_authentication
+  CASClient::Frameworks::Rails::Filter.stub!(:filter).and_return( true )
+end
