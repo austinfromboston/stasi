@@ -9,10 +9,19 @@ module ApplicationHelper
   end
 
   def searchable_projects
-    active_projects.map{ |prj| [ prj.organization[0..40], prj.id ] }.unshift( [ 'Search by Project', nil ], [ 'unassigned', 'unassigned' ] )
+    project_options.unshift( [ 'Search by Project', nil ], [ 'unassigned', 'unassigned' ] )
   end
   def active_projects
     Project.all( :order => 'organization ASC' )
   end
+
+  def agent_options
+    Agent.all(:order => 'name ASC').map { |a| [ a.name, a.id ] }
+  end
+
+  def project_options
+    active_projects.map{ |prj| [ prj.organization[0..40], prj.id ] }
+  end
+
 
 end

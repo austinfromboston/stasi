@@ -48,4 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tickets
   map.resources :hour_logs
   map.resources :projects
+  map.resource  :login
+
+  map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
 end

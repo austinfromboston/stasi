@@ -7,8 +7,8 @@ class HourLog < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 50
 
-  BILLING_TYPES = %w[ support setup bugfix ]
+  BILLING_TYPES = %w[ support setup training bugfix discovery development ]
 
-  named_scope :from_year, RadicalDesigns::Trackable.year_condition( self )
-  named_scope :from_month, RadicalDesigns::Trackable.month_condition( self )
+  named_scope :from_year,   RadicalDesigns::Trackable.year_condition( self )
+  named_scope :from_month,  RadicalDesigns::Trackable.month_condition( self )
 end

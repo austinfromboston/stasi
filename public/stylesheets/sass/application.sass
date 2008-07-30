@@ -1,4 +1,17 @@
+@import settings
 #container
+#footer
+  :padding-top 30px
+  input
+    :background-color transparent
+    :border 1px solid
+    :cursor pointer
+    :text-decoration underline
+    :font-size 12px
+    :border-color = !action_link_text
+    &:hover
+      :background-color = !action_link_text
+
 #header
   :clear both
   .search

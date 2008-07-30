@@ -3,6 +3,11 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  before_filter CASClient::Frameworks::Rails::Filter
+  before_filter :login_required
+
+  class Unauthorized < StandardError; end
+  rescue_from Unauthorized, :with => :notify_unauthorized
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
@@ -12,4 +17,16 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
+  #
+  def current_user
+    @user ||= Agent.find_by_cas_user(session[:cas_user])
+  end
+
+  def login_required
+    raise Unauthorized unless current_user
+  end
+
+  def notify_unauthorized
+    render :text => "access not granted", :status =>:unauthorized
+  end
 end

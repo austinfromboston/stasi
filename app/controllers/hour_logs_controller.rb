@@ -1,6 +1,9 @@
 class HourLogsController < ApplicationController
   make_resourceful do 
     actions :all
+    before :new do
+      current_object.agent = current_user
+    end
   end
   include SearchHelper
 

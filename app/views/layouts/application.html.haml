@@ -19,6 +19,9 @@
         #sidebar
           = sidebar_html
     #footer
+      logged in as
+      = controller.current_user.name
+      = button_to "Logout", login_path, :method => :delete
 
     - if onload_script = yield( :javascript_onload )
       = javascript_include_tag 'jquery/jquery-1.2.6.js'

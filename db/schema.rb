@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080720055425) do
+ActiveRecord::Schema.define(:version => 20080728040231) do
 
   create_table "agents", :force => true do |t|
     t.string  "name"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20080720055425) do
     t.string  "phone"
     t.string  "login"
     t.integer "help_staffer_id", :limit => 11
+    t.string  "cas_user"
   end
 
   create_table "agents_tickets", :id => false, :force => true do |t|

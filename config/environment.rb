@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'mislav-will_paginate', :version => '~> 2.3.2', :lib => 'will_paginate', 
     :source => 'http://gems.github.com'
 
+  #config.gem 'rubycas-client', :version => '~> 2.0.1'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -69,3 +70,8 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+require 'casclient'
+require 'casclient/frameworks/rails/filter'
+
+CASClient::Frameworks::Rails::Filter.configure :cas_base_url => "https://local-rubycas.org/cas"

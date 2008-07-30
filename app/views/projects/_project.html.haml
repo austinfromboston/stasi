@@ -1,7 +1,8 @@
 .name
   = project.name
 .organization
-  = project.organization
+  = link_to project.organization, project_path(project)
+  = link_to "Edit", edit_project_path( project ), :class => 'button edit', :title => 'Edit'
 .url
   = project.url
 .contacts
