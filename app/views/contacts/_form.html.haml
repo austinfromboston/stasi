@@ -1,0 +1,22 @@
+%p
+  = f.label :name, "Name"
+  = f.text_field :name
+%p
+  = f.label :email, "Email"
+  = f.text_field :email
+%p
+  = f.label :phon, "Phone"
+  = f.text_field :phone
+%p
+  = f.label :project_id, "Project"
+  = f.select :project_id, project_options, :include_blank => true
+%p
+  = f.label :primary, "Primary Contact"
+  = f.check_box :primary
+%p
+  = f.label :billable, "Billable"
+  = f.check_box :billable
+%p
+  = f.label :technical, "Technical Contact"
+  = f.check_box :technical
+

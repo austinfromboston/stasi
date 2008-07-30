@@ -1,0 +1,18 @@
+%p
+  = f.label :agent_id, "Agent"
+  = f.select :agent_id, agent_options
+%p
+  = f.label :minutes, "Minutes worked"
+  = f.text_field :minutes, :size => 5
+%p
+  = f.label :notes, "Notes on work - will display to client"
+  = f.text_area :notes
+%p
+  = f.label :billing_type, 'Task type'
+  = f.select :billing_type, HourLog::BILLING_TYPES, :include_blank => true
+%p
+  = f.label :source, "Log source"
+  = f.select :source, %w[ help_system preamp harvest basecamp ], :include_blank => true
+%p
+  = f.label :project_id, "Project"
+  = f.select :project_id, project_options, :include_blank => true
