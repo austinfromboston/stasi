@@ -59,7 +59,7 @@ module RadicalDesigns
       final_filename = "#{@tmp_path}/prepared_#{File.basename(db_file, '.gz')}"
 
       #clears out some incompatible sql from the help db dump
-      %x[ sed -e '/KEY.*contents/ d' -e 's/\(KEY.*kbarticleid.*)\),/\1/' #{txt_file} > #{final_filename} ]
+      %x[ sed -e '/KEY.*contents/ d' -e '/KEY.*kbarticledata.*kbarticleid.*)/ s/,$//' #{txt_file} > #{final_filename} ]
       final_filename
 
     end
