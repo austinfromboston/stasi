@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   before_filter CASClient::Frameworks::Rails::Filter
   before_filter :login_required
+  layout lambda{ |c| c.request.xhr? ? nil : 'application' }
 
   class Unauthorized < StandardError; end
   rescue_from Unauthorized, :with => :notify_unauthorized
@@ -27,6 +28,6 @@ class ApplicationController < ActionController::Base
   end
 
   def notify_unauthorized
-    render :text => "access not granted", :status =>:unauthorized
+    render :text => "access not granted - no registered user #{session[:cas_user]}", :status =>:unauthorized
   end
 end

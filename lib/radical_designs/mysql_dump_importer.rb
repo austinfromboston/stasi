@@ -45,9 +45,9 @@ module RadicalDesigns
     end
 
     def prepared_file( db_file )
-      @tmp_path = '/tmp/stasi'
+      @tmp_path = "#{RAILS_ROOT}/tmp/stasi"
       %x[ rm -rf #{@tmp_path} ]
-      %x[ mkdir #{@tmp_path} ]
+      %x[ mkdir -p #{@tmp_path} ]
       raise "Cannot find #{db_file}" unless File.exists? db_file
 
       %x[ cp #{db_file} #{@tmp_path} ]

@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(:version => 20080728040231) do
     t.integer  "ticket_id",      :limit => 11
     t.integer  "minutes",        :limit => 11
     t.integer  "help_hour_id",   :limit => 11
+    t.integer  "project_id",     :limit => 11
     t.string   "source"
     t.string   "billing_type"
-    t.string   "project_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"

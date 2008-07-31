@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
       format.html { redirect_to contacts_path }
       format.json { head :ok }
     end
+
   end
 
   def current_objects
