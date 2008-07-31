@@ -5,18 +5,18 @@
   = f.label :email, "Email"
   = f.text_field :email
 %p
-  = f.label :phon, "Phone"
+  = f.label :phone, "Phone"
   = f.text_field :phone
 %p
   = f.label :project_id, "Project"
   = f.select :project_id, project_options, :include_blank => true
 %p
-  = f.label :primary, "Primary Contact"
   = f.check_box :primary
+  = f.label :primary, "Primary Contact"
 %p
-  = f.label :billable, "Billable"
   = f.check_box :billable
+  = f.label :billable, "Billable Contact"
 %p
-  = f.label :technical, "Technical Contact"
   = f.check_box :technical
+  = f.label :technical, "Technical Contact"
 

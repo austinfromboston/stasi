@@ -17,8 +17,8 @@ class HelpSystem < ActiveRecord::Migration
     end
 
     create_table "hour_logs" do |t|
-      t.integer "agent_id", "ticket_id", "minutes", "help_hour_id"
-      t.string "source", "billing_type", "project_id"
+      t.integer "agent_id", "ticket_id", "minutes", "help_hour_id", "project_id"
+      t.string "source", "billing_type"
       t.text "notes"
       t.timestamps
     end

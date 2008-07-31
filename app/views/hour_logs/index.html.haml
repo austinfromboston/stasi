@@ -1,11 +1,13 @@
-.index.hour_logs
-  = render :partial => 'shared/search_by_date'
-  .summary
-    = current_search.count
-    entries,
-    = "%0.2f" % to_hours( current_search.sum(:minutes))
-    total hours
+- content_for :header do 
+  .list_controls
+    = render :partial => 'shared/search_by_date'
+    .summary
+      = current_search.count
+      entries,
+      = "%0.2f" % to_hours( current_search.sum(:minutes))
+      total hours
 
+.index.hour_logs
   %ul.totals
     = render :partial => 'project_total', :collection => @project_totals
 
