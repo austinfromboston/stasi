@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "Preamp Client" do
   before do
+    load_preamp_test_data
     @client = create_preamp_client
   end
   describe "converting to local Project" do

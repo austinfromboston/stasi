@@ -1,6 +1,9 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe HelpHour do
+  before(:all) do
+    load_ticket_test_schema
+  end
   before do
     HelpHour.delete_all
     @logged_hours = new_help_hour

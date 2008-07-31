@@ -4,7 +4,7 @@ describe 'ticket importer' do
   before do
     @db_path = "#{RAILS_ROOT}/spec/fixtures/tickets_test.sql.gz" 
     @db_unzipped_path = "#{RAILS_ROOT}/spec/fixtures/tickets_test_unzipped.sql" 
-    @tmp_path = "/tmp/stasi"
+    @tmp_path = "#{RAILS_ROOT}/tmp/stasi"
     @importer = RadicalDesigns::MysqlDumpImporter.new( 'tickets_test' )
   end
   it "creates a folder in tmp for use" do
@@ -15,15 +15,15 @@ describe 'ticket importer' do
 
   it "ungzips the file to the tmp folder if the file is gzipped" do
     @importer.prepared_file(@db_path)
-    File.exists?( "/tmp/stasi/#{File.basename(@db_path, '.gz')}").should be_true
+    File.exists?( "#{@tmp_path}/#{File.basename(@db_path, '.gz')}").should be_true
   end
 
   it "copies the file to /tmp directly if the file is not gzipped" do
     @importer.prepared_file(@db_unzipped_path)
-    File.exists?( "/tmp/stasi/#{File.basename(@db_unzipped_path)}").should be_true
+    File.exists?( "#{@tmp_path}/#{File.basename(@db_unzipped_path)}").should be_true
   end
   it "returns the correct filename for all db dumps" do
-    @importer.prepared_file(@db_unzipped_path).should == '/tmp/stasi/tickets_test_unzipped.sql'
+    @importer.prepared_file(@db_unzipped_path).should == "#{@tmp_path}/prepared_tickets_test_unzipped.sql"
   end
   it "returns only the names of files which exist" do
     new_file = @importer.prepared_file(@db_unzipped_path)
@@ -52,7 +52,7 @@ describe 'ticket importer' do
     @importer.import_dump_command( 
       @importer.prepared_file(@db_path)
       ).should match( 
-        /mysql -u \w+ --password=\w+ -D \w+ < #{@tmp_path}\/tickets_test.sql/ 
+        /mysql -u \w+ --password=\w+ -D \w+ < #{@tmp_path}\/prepared_tickets_test.sql/ 
         )
   end
   it "has a one-stop method" do

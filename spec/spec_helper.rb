@@ -76,7 +76,11 @@ def describe_rake_task(task_name, filename, &block)
 end
 def load_ticket_test_schema
   importer = RadicalDesigns::MysqlDumpImporter.new('tickets_test')
-  importer.process('spec/fixtures/tickets_test.sql.gz')
+  importer.process("#{RAILS_ROOT}/spec/fixtures/tickets_test.sql.gz")
+end
+def load_preamp_test_data
+  importer = RadicalDesigns::MysqlDumpImporter.new('preamp_test')
+  importer.process("#{RAILS_ROOT}/spec/fixtures/preamp_test.sql")
 end
 
 def stub_authentication

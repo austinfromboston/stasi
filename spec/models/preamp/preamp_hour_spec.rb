@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/../../spec_helper'
 
 describe "PreampHour" do
   before do
+    load_preamp_test_data
     @hour = create_preamp_hour
   end
   describe "converting to local" do
@@ -37,6 +38,7 @@ describe "PreampHour" do
     end
 
     it "finds an existing linked project" do
+      Project.delete_all
       client = create_preamp_client
       @hour.client_id = client.id
       prj = create_project :preamp_client_id => client.id

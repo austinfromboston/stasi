@@ -19,14 +19,16 @@ class HelpUser < HelpData
   }
 
   def self.relate_imported_contacts_to_projects
-    preamp_keys = YAML.load_file "#{RAILS_ROOT}/config/imported_contacts_and_projects.yaml"  rescue {}
+    preamp_keys = YAML.load_file "#{RAILS_ROOT}/config/imported_contacts_and_projects.yaml"
+    return unless preamp_keys
     preamp_keys.each do | help_id, preamp_client_id |
       hcontact = Contact.find_by_help_user_id  help_id
       project = Project.find_by_preamp_client_id preamp_client_id
       next unless hcontact && project && hcontact.project_id.nil?
       hcontact.update_attribute( :project_id, project.id )
     end
-    
+    rescue
+      puts "No contact/project keys found"
   end
 
   def require_tickets
