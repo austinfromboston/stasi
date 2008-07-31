@@ -55,7 +55,13 @@ module RadicalDesigns
         %x[ gunzip #{@tmp_path}/#{File.basename(db_file)} ]
       end
 
-      "#{@tmp_path}/#{File.basename(db_file, '.gz')}"
+      txt_file = "#{@tmp_path}/#{File.basename(db_file, '.gz')}"
+      final_filename = "#{@tmp_path}/prepared_#{File.basename(db_file, '.gz')}"
+
+      #clears out some incompatible sql from the help db dump
+      %x[ sed -e '/KEY.*contents/ d' -e 's/\(KEY.*kbarticleid.*)\),/\1/' #{txt_file} #{final_filename} ]
+      final_filename
+
     end
   end
 end
