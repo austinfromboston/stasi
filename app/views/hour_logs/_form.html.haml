@@ -1,4 +1,7 @@
 %p
+  = f.label :project_id, "Project"
+  = f.select :project_id, project_options, :include_blank => true
+%p
   = f.label :agent_id, "Agent"
   = f.select :agent_id, agent_options
 %p
@@ -13,6 +16,3 @@
 %p
   = f.label :source, "Log source"
   = f.select :source, %w[ help_system preamp harvest basecamp ], :include_blank => true
-%p
-  = f.label :project_id, "Project"
-  = f.select :project_id, project_options, :include_blank => true
