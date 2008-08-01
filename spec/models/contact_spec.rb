@@ -13,31 +13,32 @@ describe Contact do
 
   describe "holding a grudge" do
     before do
-      Contact.class_eval { @grudges = nil }
+      ContactGrudgeRecorder.class_eval { @grudges = nil }
     end
     it "creates a new grudge when a contact is destroyed" do
-      Contact.grudges.stub!(:include?).and_return(false)
-      Contact.grudges.should_receive(:<<)
+      ContactGrudgeRecorder.stub!(:match?).and_return(false)
+      ContactGrudgeRecorder.should_receive(:before_destroy)
+      #@contact.should_receive(:before_dest)
       @contact.destroy
     end
 
     it "re-saves the grudge file when a contact is destroyed" do
       dump_file = "#{RAILS_ROOT}/config/contact_grudges_test.yaml"
-      File.should_receive(:open).with( dump_file, "w" )
+      File.should_receive(:open).with( dump_file, 'w')
       @contact.destroy
     end
 
     it "creates a new file if it needs to" do
-      %x[ rm #{Contact.grudge_dump_file} ]
+      %x[ rm #{ContactGrudgeRecorder.dump_file} ]
       @contact.destroy
-      File.exists?( Contact.grudge_dump_file ).should be_true
+      File.exists?( ContactGrudgeRecorder.dump_file ).should be_true
     end
 
     it "reads grudges from the file if no grudges are initialized" do
-      %x[ rm #{Contact.grudge_dump_file} ]
+      %x[ rm #{ContactGrudgeRecorder.dump_file} ]
       @contact.destroy
-      Contact.class_eval { @grudges = nil }
-      Contact.grudge_match?( @contact ).should be_true
+      ContactGrudgeRecorder.class_eval { @grudges = nil }
+      ContactGrudgeRecorder.match?( @contact ).should be_true
     end
   end
 end
