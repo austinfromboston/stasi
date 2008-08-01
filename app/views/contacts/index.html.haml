@@ -7,16 +7,14 @@
 
 - content_for :javascript_onload do
   :plain
-    $('.list_toolbar li.delete input').click( function(ev) {
-      //console.log ($(ev.target.form).attr('action') + '.json' )
-      //console.log( { _method: 'delete', authentication_token: $(ev.target.form.elements['authenticity_token']).val() } );
-      if ( confirm('You want to ax them for real?')) {
-        $.post( ($(ev.target.form).attr('action') + '.json' ), { _method: 'delete', authenticity_token: $(ev.target.form.elements['authenticity_token']).val() }, function( data ) {
-          $(ev.target).parents('li.standard').empty();
-        } );
-      }
-      return false;
+    //$('.list_toolbar li.delete input').click( function(ev) {
+    $('.index.contacts').click( function(ev) {
+      if ( $(ev.target).is('.delete.button')) return delete_action(ev);
+      if(  $(ev.target).is('.ticket_preview_toggle')) return ticket_preview(ev);
     } );
+
+- content_for :javascript_onload do
+  :plain
     $('.draggable').draggable().mousedown( function( ev ) { 
         $(ev.target).parents('.draggable').addClass('active'); 
       } ).mouseup( function( ev ) { 
@@ -37,20 +35,3 @@
         bits.draggable.removeClass('busy');
       } } );
 
-    $( 'ul.tickets' ).click( function(ev) {
-      if( !$(ev.target).hasClass('ticket_preview_toggle')) return true;
-      var preview_display = $( ev.target ).next('.preview');
-      if ( preview_display.html() == '' ) {
-        $.getJSON( $(ev.target).attr('href') + '.json', '', function( data ) {
-          preview_display.html( data.ticket.messages ).addClass('active');
-        } );
-      } else {
-        if(preview_display.is(':visible')) {
-          preview_display.hide();
-        } else {
-          preview_display.show();
-        }
-      }
- 
-      return false;
-    } );

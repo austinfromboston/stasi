@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
   class Unauthorized < StandardError; end
   rescue_from Unauthorized, :with => :notify_unauthorized
 
+  make_resourceful do 
+    response_for :create do |format|
+      format.html { redirect_to object_path }
+      format.json { render :json => current_object }
+    end
+  end
+
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '840cabc7ca831d186c322c120b732863'

@@ -12,6 +12,7 @@
     #header
       = render 'layouts/menu'
       = yield :header
+      #remote_action
     #main
       #content
         = yield
@@ -23,12 +24,12 @@
       = controller.current_user.name
       = button_to "Logout", login_path, :method => :delete
 
-    - if onload_script = yield( :javascript_onload )
-      = javascript_include_tag 'jquery/jquery-1.2.6.js'
-      = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.core.js'
-      = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.draggable.js'
-      = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.droppable.js'
-      - javascript_tag do
-        $( function() {
-        = onload_script
-        }) ;
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'jquery/jquery-1.2.6.js'
+    = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.core.js'
+    = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.draggable.js'
+    = javascript_include_tag 'jquery/jquery.ui-1.5.1/ui/ui.droppable.js'
+    - javascript_tag do
+      $( function() {
+      = yield :javascript_onload
+      }) ;
