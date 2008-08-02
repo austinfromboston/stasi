@@ -23,7 +23,7 @@
         $("#remote_action :submit").click( function( ev ) {
           $.post( ($(ev.target.form).attr('action') + '.json'), $(ev.target.form).serialize(), function( resp ) {
             for( var prop in resp ) {
-              $("#remote_action").text(resp[prop]['name']);
+              $("#remote_action").text(resp[prop]['display_name']);
             }
           }, 'json' );
           return false;

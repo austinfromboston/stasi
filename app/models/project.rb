@@ -5,6 +5,10 @@ class Project < ActiveRecord::Base
 
   attr_accessor :contact_data
 
+  def display_name
+    name || organization
+  end
+
 =begin
   def contact_data=(data)
     return true unless data && !data.empty?

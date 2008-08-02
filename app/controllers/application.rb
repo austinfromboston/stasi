@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   make_resourceful do 
     response_for :create do |format|
       format.html { redirect_to object_path }
-      format.json { render :json => current_object }
+      format.json { render :json => current_object.to_json(:methods => :display_name) }
     end
   end
 

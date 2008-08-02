@@ -7,6 +7,10 @@ class Contact < ActiveRecord::Base
   named_scope :unassigned, :conditions => [ 'project_id is ?', nil ]
   before_destroy ContactGrudgeRecorder
 
+  def display_name
+    name
+  end
+
   def update_project_hour_logs
     return unless project_id
     tix = tickets.find :all, :include => :hour_logs

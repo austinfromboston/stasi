@@ -20,6 +20,7 @@ a.button
     :background-image url(/images/actions/list-add.png)
   &.edit
     :background-image url(/images/actions/edit.png)
+
 .list_toolbar
   :list-style none
   :padding 0
@@ -56,10 +57,20 @@ li.target
     :border 3px solid
     :border-color = !target_found
 
+p.submit
+  :text-align center
+
 #remote_action
   p.submit, .form-full
     :display block
     :clear both
+    :width 700px
+
+  label
+    :display block
+  .checkbox label
+    :display inline
+  
 
   .form-group
     :display inline-block

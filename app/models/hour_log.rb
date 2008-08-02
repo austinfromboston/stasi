@@ -11,4 +11,8 @@ class HourLog < ActiveRecord::Base
 
   named_scope :from_year,   RadicalDesigns::Trackable.year_condition( self )
   named_scope :from_month,  RadicalDesigns::Trackable.month_condition( self )
+
+  def display_name
+    "#{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours, #{agent.display_name} for #{project.display_name}"
+  end
 end
