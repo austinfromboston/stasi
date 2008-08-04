@@ -1,3 +1,8 @@
-%li
-  = render :partial => 'hour_logs/hour_log', :object => hour_log
+- if header =  project_total_heading(hour_log)
+  .standard.span-16
+    %h3
+      = header
+.standard.span-16
+  %li
+    = render :partial => 'hour_logs/hour_log', :object => hour_log
 

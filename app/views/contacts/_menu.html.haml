@@ -1,5 +1,2 @@
-%ul.list_toolbar
-  %li.delete
-    = button_to "Delete", contact_path( contact ), :method => :delete, :class => 'delete button'
-  %li
-    = link_to "Edit", edit_contact_path( contact ), :class => 'edit button', :title => 'Edit'
+= button_to "Delete", contact_path( contact ), :method => :delete, :class => 'delete button', :title => 'Delete'
+= link_to "Edit", edit_contact_path( contact ), :class => 'edit button', :title => 'Edit'

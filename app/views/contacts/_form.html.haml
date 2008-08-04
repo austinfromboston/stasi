@@ -1,25 +1,26 @@
-.form-group
-  %p
-    = f.label :name, "Name"
-    = f.text_field :name
-  %p
-    = f.label :email, "Email"
-    = f.text_field :email
-  %p
-    = f.label :phone, "Phone"
-    = f.text_field :phone
+.container
+  .span-8
+    %p
+      = f.label :name, "Name"
+      = f.text_field :name
+    %p
+      = f.label :email, "Email"
+      = f.text_field :email
+    %p
+      = f.label :phone, "Phone"
+      = f.text_field :phone
 
-.form-group.checkbox
-  %p
-    = f.check_box :primary
-    = f.label :primary, "Primary Contact"
-  %p
-    = f.check_box :billable
-    = f.label :billable, "Billable Contact"
-  %p
-    = f.check_box :technical
-    = f.label :technical, "Technical Contact"
+  .checkbox.span-8
+    %p
+      = f.check_box :primary
+      = f.label :primary, "Primary Contact"
+    %p
+      = f.check_box :billable
+      = f.label :billable, "Billable Contact"
+    %p
+      = f.check_box :technical
+      = f.label :technical, "Technical Contact"
 
-%p.form-full
+%p.span-16
   = f.label :project_id, "Project"
   = f.select :project_id, project_options, :include_blank => true

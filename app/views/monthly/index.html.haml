@@ -1,0 +1,9 @@
+%h2
+  = link_to "&laquo;", last_month_path
+  = Time.mktime( params[:year], params[:month] ).strftime('%B %Y' )
+  = link_to "&raquo;", next_month_path
+  = link_to "today", current_month_path, :class => 'small'
+  = link_to "csv", url_for(:format => 'csv'), :class => 'small'
+= render :partial => 'hour_logs/summary'
+%ul.searchable.plain
+  = render :partial => 'hour_logs/list/hour_log', :collection => @hour_logs

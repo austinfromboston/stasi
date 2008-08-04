@@ -1,6 +1,5 @@
-.index.contacts
-  %ul
-    = render :partial => 'contacts/list/contact', :collection => @contacts
+%ul.searchable
+  = render :partial => 'contacts/list/contact', :collection => @contacts
 
 - content_for :sidebar do
   = render :partial => 'projects/toolbar'
@@ -8,7 +7,7 @@
 - content_for :javascript_onload do
   :plain
     //$('.list_toolbar li.delete input').click( function(ev) {
-    $('.index.contacts').click( function(ev) {
+    $('body').click( function(ev) {
       if ( $(ev.target).is('.delete.button')) return delete_action(ev);
       if(  $(ev.target).is('.ticket_preview_toggle')) return ticket_preview(ev);
     } );

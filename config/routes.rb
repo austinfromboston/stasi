@@ -46,7 +46,10 @@ ActionController::Routing::Routes.draw do |map|
     contact.resources :involvements
   end
   map.resources :tickets
-  map.resources :hour_logs
+  map.resources :hour_logs 
+  map.connect '/hour_logs/monthly/:month/:year', :controller => 'monthly', :action => 'index'
+  map.connect '/hour_logs/monthly/:month/:year.:format', :controller => 'monthly', :action => 'index', :defaults => { :format => :html }
+
   map.resources :projects
   map.resource  :login
 

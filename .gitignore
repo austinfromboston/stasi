@@ -7,3 +7,4 @@ public/ticket_data_imports
 public/stylesheets/*css
 config/imported*yaml
 config/*grudges*yaml
+*.DS_Store

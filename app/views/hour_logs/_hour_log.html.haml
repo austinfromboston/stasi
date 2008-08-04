@@ -1,13 +1,10 @@
-.agent
-  = hour_log.agent.name if hour_log.agent
-.time
-  = "%0.2f" % to_hours( hour_log.minutes )
-  hours
-- if hour_log.ticket and hour_log.ticket.contact
-  .client
-    = hour_log.ticket.contact.name 
-- if hour_log.project
-  .project
-    = hour_log.project.organization
+.clear
+.span-1
+  = link_to "edit", edit_hour_log_path( hour_log ), :class => 'edit button', :title => 'edit'
+.span-12
+  %h4
+    = hour_log.display_name
+  - if hour_log.notes
+    .notes
+      = hour_log.notes
 
-= link_to "Edit", edit_hour_log_path( hour_log ), :class => 'button edit', :title => 'Edit'

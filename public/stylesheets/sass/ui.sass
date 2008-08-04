@@ -7,32 +7,38 @@
       :white-space pre
       :overflow scroll
 
-a.button
-  :display -moz-inline-box
+
+.button
+  :color transparent
+  :text-decoration none
   :display inline-block
-  :padding-top 30px
-  :overflow hidden
   :width 18px
-  :height 18px
-  :background-position -2px -2px
+  :min-height 18px
+  :background-position -2px 2px
   :background-repeat no-repeat
+  .large &
+    :background-position -2px .6em
   &.add
     :background-image url(/images/actions/list-add.png)
   &.edit
     :background-image url(/images/actions/edit.png)
+  &.delete
+    :background-image url(/images/actions/delete.png)
+  &.show
+    :background-image url(/images/actions/show.png)
+  &.hide
+    :background-image url(/images/actions/show.png)
 
-.list_toolbar
-  :list-style none
-  :padding 0
-  .delete
-    input
-      :background url(/images/actions/delete.png)
-      :border 0
-      :padding 0 0 0 16px
-      :cursor pointer
-      :background-repeat no-repeat
-      &:hover
-        :background-color = !toolbar_hover
+.summary_header
+  :cursor pointer
+
+input.button
+  :border 0
+  :cursor pointer
+  :float left
+  :background-position 0px 2px
+  &:hover
+    :color black
 
 li.target
   &.accepting
@@ -46,7 +52,7 @@ li.target
       :border-color = !target_open_border
       :background-color = !target_hover
 
-.hidden
+.hidden, .js-hidden
   :display none
 
 .draggable
@@ -60,23 +66,28 @@ li.target
 p.submit
   :text-align center
 
-#remote_action
-  p.submit, .form-full
-    :display block
-    :clear both
-    :width 700px
+input[type=text]
+  :margin-top 0.5em
 
+#remote_action
   label
     :display block
   .checkbox label
     :display inline
+  textarea
+    :height 25px
   
 
-  .form-group
-    :display inline-block
-    :display -moz-inline-box
-    :float left
-    :width 300px
-    :margin-right 50px
-    p
-      :display block
+#header .search
+  :margin-top .2em
+  input
+    :font-size 1em
+
+.plain
+  :list-style none
+
+ul.searching
+  & > li
+    :display none
+  & > li.found
+    :display block

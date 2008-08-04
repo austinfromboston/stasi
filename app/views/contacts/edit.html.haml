@@ -1,7 +1,6 @@
-.edit.contact
-  = error_messages_for :contact
-  - form_for @contact do |f|
-    = render :partial => 'form', :locals => { :f => f }
-    %p.submit
-      = f.submit "Update"
+= error_messages_for :contact
+- form_for @contact do |f|
+  = render :partial => 'form', :locals => { :f => f }
+  %p.submit.span-6
+    = f.submit "Update"
 

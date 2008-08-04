@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def project_options
-    active_projects.map{ |prj| [ prj.organization[0..40], prj.id ] }
+    active_projects.map{ |prj| [ prj.organization[0..30], prj.id ] }
   end
 
 

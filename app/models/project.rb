@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   attr_accessor :contact_data
 
   def display_name
-    name || organization
+    name || organization.to_s[0..40]
   end
 
 =begin

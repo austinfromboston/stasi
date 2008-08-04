@@ -1,6 +1,5 @@
-.new.hour_log
-  = error_messages_for :hour_log
-  - form_for @hour_log do |f|
-    = render :partial => 'form', :locals => { :f => f }
-    %p.submit
-      = f.submit "Log Hours"
+= error_messages_for :hour_log
+- form_for @hour_log do |f|
+  = render :partial => 'form', :locals => { :f => f }
+  %p.submit.span-6
+    = f.submit "Log Hours"

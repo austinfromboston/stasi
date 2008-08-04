@@ -1,17 +1,23 @@
 - content_for :header do 
-  .list_controls
+  .span-6
     = render :partial => 'shared/search_by_date'
-    .summary
-      = current_search.count
-      entries,
-      = "%0.2f" % to_hours( current_search.sum(:minutes))
-      total hours
 
-.index.hour_logs
-  %ul.totals
-    = render :partial => 'project_total', :collection => @project_totals
+= render :partial => 'summary'
+%h3.summary_header Summary By Project
 
-  = will_paginate @hour_logs
-  %ul
-    = render :partial => 'hour_logs/list/hour_log', :collection => @hour_logs
-  = will_paginate @hour_logs
+%ul#summary_by_project
+  = render :partial => 'project_total', :collection => @project_totals
+
+= will_paginate @hour_logs
+%ul.searchable
+  = render :partial => 'hour_logs/list/hour_log', :collection => @hour_logs
+= will_paginate @hour_logs
+
+
+- content_for :javascript_onload do
+  show_toggle($('#summary_by_project'), $('.summary_header'));
+  $('.summary_header').click( function(ev) { 
+  show_toggle($('#summary_by_project'), $('.summary_header'));
+  return false;
+  } );
+

@@ -1,33 +1,38 @@
-%ul#main_menu
-  %li
-    = link_to "Tickets",  tickets_path
-  %li
-    = link_to "Agents",   agents_path
-  %li
-    .group
+.span-6.large
+  - if controller.action_name == 'index'
+    .search.js-hidden
+      = text_field_tag :search_index, "Find in List", :id => 'find_searchables'
+
+.span-12.large
+  %ul#main_menu
+    %li
+      = link_to "Tickets",  tickets_path
+      .empty.button
+    %li
+      = link_to "Agents",   agents_path
+      .empty.button
+    %li
       = link_to "Contacts", contacts_path
-      = link_to "New Contact", new_contact_path, :class => "button add", :title => 'New Contact'
-  %li
-    .group
-      = link_to "Hours",    hour_logs_path
-      = link_to "New Hour Log", new_hour_log_path, :class => "button add", :title => 'New Hour Log'
-  %li
-    .group
+      = link_to "add", new_contact_path, :class => "add button", :title => 'New Contact'
+    %li
+      = link_to "Hours",    current_month_path
+      = link_to "add", new_hour_log_path, :class => "add button", :title => 'New Hour Log'
+    %li
       = link_to "Projects", projects_path
-      = link_to "New Project", new_project_path, :class => "button add", :title => 'New Project'
+      = link_to "add", new_project_path, :class => "add button", :title => 'New Project'
+
+  
 
 - content_for :javascript_onload do 
   :plain
-    $("#main_menu .add").click( function( ev ){ 
-      $("#remote_action").load( $(ev.target).attr('href'), function( data ) {
-        $("#remote_action :submit").click( function( ev ) {
-          $.post( ($(ev.target.form).attr('action') + '.json'), $(ev.target.form).serialize(), function( resp ) {
-            for( var prop in resp ) {
-              $("#remote_action").text(resp[prop]['display_name']);
-            }
-          }, 'json' );
-          return false;
-        } );
-      } );
-      return false; 
-    } );
+    $("body").click( function( ev ){ if( $(ev.target).is('.add')) return add_action(ev); return true; } );
+
+    $('#find_searchables').focus( 
+        function( ev ) { $(ev.target).val( '' ); search_all( '' ); } 
+      ).keyup( 
+        function( ev ) { 
+          var pending = $(ev.target).attr('search');
+          if( pending != undefined) clearTimeout( pending );
+          $(ev.target).attr('search', setTimeout( function() { search_all( $(ev.target).val() ); }, 200 )); 
+        } 
+      );

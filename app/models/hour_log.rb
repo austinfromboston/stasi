@@ -13,6 +13,6 @@ class HourLog < ActiveRecord::Base
   named_scope :from_month,  RadicalDesigns::Trackable.month_condition( self )
 
   def display_name
-    "#{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours, #{agent.display_name} for #{project.display_name}"
+    "#{project.display_name if project} #{billing_type} : #{ agent.display_name}, #{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours"
   end
 end

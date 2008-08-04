@@ -1,5 +1,5 @@
 .name
-  = contact.name
+  = contact.display_name
 .email
   = contact.email
 .phone
@@ -10,4 +10,5 @@
 - if contact.contact_type
   .meta
     = contact.contact_type
+= link_to "Delete", contact_path( contact ), :class => 'delete button', :title => "Edit", :method => :delete
 = link_to "Edit", edit_contact_path( contact ), :class => 'edit button', :title => "Edit"
