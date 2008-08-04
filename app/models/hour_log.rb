@@ -12,6 +12,8 @@ class HourLog < ActiveRecord::Base
   named_scope :from_year,   RadicalDesigns::Trackable.year_condition( self )
   named_scope :from_month,  RadicalDesigns::Trackable.month_condition( self )
 
+  attr_accessor :charges, :overage
+
   def display_name
     "#{project.display_name if project} #{billing_type} : #{ agent.display_name}, #{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours"
   end

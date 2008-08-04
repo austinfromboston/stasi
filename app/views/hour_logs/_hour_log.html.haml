@@ -4,7 +4,9 @@
 .span-12
   %h4
     = hour_log.display_name
+  - if hour_log.charges
+    = "$%0.2f" % hour_log.charges
   - if hour_log.notes
     .notes
-      = hour_log.notes
+      = simple_format hour_log.notes
 

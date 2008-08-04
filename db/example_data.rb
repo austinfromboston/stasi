@@ -9,6 +9,13 @@ module FixtureReplacement
     a.project = default_project
   end
 
+  attributes_for :contract do |a|
+    a.monthly_support_hours = 0.5
+    a.hourly_rate = 100
+    a.monthly_retainer = 100
+    a.project = default_project
+  end
+
   attributes_for :ticket do |a|
     a.contact = default_contact
     a.subject = 'default_ticket'

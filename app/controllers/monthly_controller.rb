@@ -12,7 +12,8 @@ class MonthlyController < HourLogsController
         @csv_output = FasterCSV.generate do |csv|
           csv << [ 'project_id', 'client_id', 'staff', 'task', 'description', 'time', 'time_over', 'rate', 'charges' ]
           @hour_logs.each do |log|
-            csv << [ log.project_id, nil, log.agent.display_name, log.billing_type, log.notes, log.minutes, nil, nil, nil ]
+            rate = ( log.project && log.project.contracts.first && log.project.contracts.first.hourly_rate ) || 0
+            csv << [ log.project_id, nil, log.agent.display_name, log.billing_type, log.notes, log.minutes, log.overage, rate, log.charges ]
           end
         end
         render :text => @csv_output
@@ -30,6 +31,17 @@ class MonthlyController < HourLogsController
   end
   def current_objects
     super
-    current_search.all :include => :project, :order => 'if((projects.name != ""), projects.name, projects.organization)  ASC'
+    items = current_search.all :include => :project, :order => 'if((projects.name != ""), projects.name, projects.organization)  ASC'
+    @grouped_by_project = items.inject({} ) do |grouped, item|
+      grouped[ item.project] ||= []
+      grouped[ item.project] << item
+      grouped
+    end
+    @grouped_by_project.each do |proj, group|
+      next unless proj and contract = proj.contracts.first
+      contract.assign_charges( group )
+    end
+    items
+    
   end
 end

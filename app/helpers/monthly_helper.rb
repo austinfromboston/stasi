@@ -4,17 +4,16 @@ module MonthlyHelper
     return if log.project.nil? or @current_project_heading && ( @current_project_heading == log.project )
     @current_project_heading = log.project 
 
-    total_block = @project_totals.assoc( log.project_id )
-    total_minutes = total_block.last || 0
+    @project_logs = @grouped_by_project[ log.project ]
+    return log.project.display_name unless @project_logs
+    total_minutes = (@project_logs.sum { | plog| plog.minutes || 0 })
+     
     base_heading = "#{log.project.display_name}  &mdash; #{total_minutes.minutes.to_f / 1.hour } hours"
+    total_charges = (@project_logs.sum { |plog| plog.charges || 0 }) 
+    return base_heading unless total_charges && total_charges > 0 
 
-    contract = log.project.contracts.first
-    return base_heading unless contract 
+    "#{base_heading} &mdash; #{"$%0.2f" % total_charges}"
 
-    overage_time = total_minutes.minutes - contract.monthly_support_hours.hours 
-    return base_heading unless overage_time > 0
-
-    "#{log.project.display_name}  &mdash; #{(total_block.last || 0 ).minutes.to_f / 1.hour } hours &mdash; #{"$%0.2f" % ((overage_time.to_f  / 1.hours) * contract.hourly_rate)}"
   end
 
   def next_month_path
