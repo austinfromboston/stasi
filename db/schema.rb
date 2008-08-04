@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080728040231) do
+ActiveRecord::Schema.define(:version => 20080804043544) do
 
   create_table "agents", :force => true do |t|
     t.string  "name"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20080728040231) do
     t.boolean  "technical"
     t.boolean  "deleted"
     t.integer  "preamp_client_id", :limit => 11
+  end
+
+  create_table "contracts", :force => true do |t|
+    t.integer "project_id",            :limit => 11
+    t.float   "monthly_support_hours"
+    t.integer "monthly_retainer",      :limit => 11
+    t.integer "hourly_rate",           :limit => 11
+    t.string  "status"
+    t.date    "activated_on"
+    t.date    "signed_on"
   end
 
   create_table "hour_logs", :force => true do |t|

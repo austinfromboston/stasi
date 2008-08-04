@@ -5,6 +5,18 @@
   = link_to "Edit", edit_project_path( project ), :class => 'button edit', :title => 'Edit'
 .url
   = project.url
+.terms
+  - if contract = project.contracts.first
+    .span-2
+      %label Monthly:
+      = contract.monthly_support_hours
+    .span-2
+      %label Hourly:
+      = contract.hourly_rate
+    .span-4
+      %label Hosting/Support:
+      = contract.monthly_retainer
+    .clear
 .contacts
   %ul
     = render :partial => 'contacts/list/contact', :collection => project.contacts

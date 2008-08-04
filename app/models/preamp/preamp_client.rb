@@ -9,7 +9,8 @@ class PreampClient < PreampData
     :preamp_client_id =>  'client_id',
     :created_at       =>  'parsed_date',
     :contact_data     =>  'contact_data',
-    :preamp_status    =>  'client_status'
+    :preamp_status    =>  'client_status',
+    :contract_data    =>  'contract'
   }
 
   LOCAL_CONTACT_TYPES = {
@@ -19,6 +20,13 @@ class PreampClient < PreampData
 
   def parsed_date
     date_started ? date_started.to_time : Time.now
+  end
+
+  def contract
+    { 
+      :monthly_support_hours => support_hours, 
+      :hourly_rate => rate_hourly,
+      :monthly_retainer => rate_montly }
   end
 
   def contact_data

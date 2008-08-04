@@ -3,8 +3,18 @@ module MonthlyHelper
   def project_total_heading(log)
     return if log.project.nil? or @current_project_heading && ( @current_project_heading == log.project )
     @current_project_heading = log.project 
+
     total_block = @project_totals.assoc( log.project_id )
-    "#{log.project.display_name}  &mdash; #{(total_block.last || 0 ).minutes.to_f / 1.hour } hours"
+    total_minutes = total_block.last || 0
+    base_heading = "#{log.project.display_name}  &mdash; #{total_minutes.minutes.to_f / 1.hour } hours"
+
+    contract = log.project.contracts.first
+    return base_heading unless contract 
+
+    overage_time = total_minutes.minutes - contract.monthly_support_hours.hours 
+    return base_heading unless overage_time > 0
+
+    "#{log.project.display_name}  &mdash; #{(total_block.last || 0 ).minutes.to_f / 1.hour } hours &mdash; #{"$%0.2f" % ((overage_time.to_f  / 1.hours) * contract.hourly_rate)}"
   end
 
   def next_month_path

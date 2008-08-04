@@ -1,16 +1,17 @@
-.span-6.large
+.span-10.large
   - if controller.action_name == 'index'
     .search.js-hidden
       = text_field_tag :search_index, "Find in List", :id => 'find_searchables'
 
-.span-12.large
+.span-8.large
   %ul#main_menu
-    %li
-      = link_to "Tickets",  tickets_path
-      .empty.button
-    %li
-      = link_to "Agents",   agents_path
-      .empty.button
+    -#
+      %li
+        = link_to "Tickets",  tickets_path
+        .empty.button
+      %li
+        = link_to "Agents",   agents_path
+        .empty.button
     %li
       = link_to "Contacts", contacts_path
       = link_to "add", new_contact_path, :class => "add button", :title => 'New Contact'
