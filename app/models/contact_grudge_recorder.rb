@@ -21,9 +21,7 @@ class ContactGrudgeRecorder
   def self.create(item)
     return true if match?(item)
     @grudges << build(item)
-    puts dump_file
     File.open( dump_file, "w") { |f|  YAML.dump( grudges, f ) }
-    puts File.read(dump_file)
   end
 
   def self.build(item)
