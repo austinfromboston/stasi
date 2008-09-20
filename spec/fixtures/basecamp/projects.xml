@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projects type="array">
+  <project>
+    <announcement></announcement>
+    <created-on type="date">2007-03-08</created-on>
+    <id type="integer">941163</id>
+    <last-changed-on type="datetime">2007-03-08T18:56:27Z</last-changed-on>
+    <name>No War No Warming</name>
+    <show-announcement type="boolean">false</show-announcement>
+    <show-writeboards type="boolean">true</show-writeboards>
+    <start-page>log</start-page>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-08</created-on>
+    <id type="integer">941216</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Code Pink Redesign</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-08</created-on>
+    <id type="integer">941223</id>
+    <last-changed-on type="datetime">2007-03-08T19:03:59Z</last-changed-on>
+    <name>Womens Enviro Health</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956952</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Center for Genetics and Society</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956970</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Center on Policy Initiatives</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956973</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Sea Turtle Restoration Project</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956994</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>California Alliance</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956995</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Crtical Resistance</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956996</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Harm Reduction Coalition</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956997</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Peaceful Tomorrows</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-03-15</created-on>
+    <id type="integer">956999</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>National Center for Transgender Equality</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-05-31</created-on>
+    <id type="integer">1120631</id>
+    <last-changed-on type="datetime">2008-08-13T22:52:24Z</last-changed-on>
+    <name>GreenChange</name>
+    <status>active</status>
+    <company>
+      <id type="integer">626396</id>
+      <name>GreenChange</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-10-29</created-on>
+    <id type="integer">1496387</id>
+    <last-changed-on type="datetime">2007-11-03T20:59:28Z</last-changed-on>
+    <name>StepItUp 2</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-10-31</created-on>
+    <id type="integer">1500831</id>
+    <last-changed-on type="datetime">2007-11-05T23:29:40Z</last-changed-on>
+    <name>green change round 1</name>
+    <status>active</status>
+    <company>
+      <id type="integer">626396</id>
+      <name>GreenChange</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-11-06</created-on>
+    <id type="integer">1516013</id>
+    <last-changed-on type="datetime">2007-11-06T05:49:24Z</last-changed-on>
+    <name>Catalog Cutdown</name>
+    <status>archived</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2007-11-06</created-on>
+    <id type="integer">1517824</id>
+    <last-changed-on type="datetime">2008-05-19T21:32:36Z</last-changed-on>
+    <name>Revent</name>
+    <status>active</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2008-05-19</created-on>
+    <id type="integer">2075907</id>
+    <last-changed-on type="datetime">2008-07-26T00:34:45Z</last-changed-on>
+    <name>Dev team</name>
+    <status>active</status>
+    <company>
+      <id type="integer">535106</id>
+      <name>Radical Designs</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2008-07-30</created-on>
+    <id type="integer">2293936</id>
+    <last-changed-on type="datetime">2008-07-30T18:41:30Z</last-changed-on>
+    <name>Initial site setup</name>
+    <status>active</status>
+    <company>
+      <id type="integer">1066257</id>
+      <name>First Church Oakland</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2008-07-31</created-on>
+    <id type="integer">2299351</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Revent customization and integration</name>
+    <status>active</status>
+    <company>
+      <id type="integer">1068132</id>
+      <name>working films</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2008-07-31</created-on>
+    <id type="integer">2299357</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>ongoing support</name>
+    <status>active</status>
+    <company>
+      <id type="integer">996091</id>
+      <name>ForestEthics</name>
+    </company>
+  </project>
+  <project>
+    <created-on type="date">2008-07-31</created-on>
+    <id type="integer">2299370</id>
+    <last-changed-on type="datetime" nil="true"></last-changed-on>
+    <name>Initial site setup</name>
+    <status>active</status>
+    <company>
+      <id type="integer">1068131</id>
+      <name>CASE</name>
+    </company>
+  </project>
+</projects>
