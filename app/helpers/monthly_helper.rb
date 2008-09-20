@@ -1,7 +1,7 @@
 module MonthlyHelper
 
   def project_total_heading(log)
-    return if log.project.nil? or @current_project_heading && ( @current_project_heading == log.project )
+    return if log.project.nil? or @grouped_by_project.nil? or @current_project_heading && ( @current_project_heading == log.project ) 
     @current_project_heading = log.project 
 
     @project_logs = @grouped_by_project[ log.project ]
