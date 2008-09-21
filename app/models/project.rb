@@ -28,4 +28,12 @@ class Project < ActiveRecord::Base
   def contract_data=(values)
     contracts.build values
   end
+
+  def update_basecamp_hours
+    return unless basecamp_id and entries = Basecamp::TimeEntry.all( basecamp_id )
+    entries.each do | entry |
+      next if hour_logs.find_by_basecamp_id entry.id
+      hour_logs.create HourLog.convert_from_basecamp( entry )
+    end
+  end
 end

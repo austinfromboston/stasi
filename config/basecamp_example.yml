@@ -1,0 +1,5 @@
+---
+domain: accountname.clientsection.com
+login: username
+password: pw
+ssl: true

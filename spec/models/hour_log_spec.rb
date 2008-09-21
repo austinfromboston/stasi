@@ -23,4 +23,25 @@ describe HourLog do
       HourLog.all.size.should == 2
     end
   end
+
+  describe "conversion from basecamp" do
+    before do
+      @basecamp_entry = Basecamp::TimeEntry.new "date"=> Time.mktime( 2008, 9, 15).to_date, "id"=>10471220, "description"=>nil, "hours"=>0.5, "person_id"=>1293173
+      Agent.delete_all
+      create_agent :id => 5, :basecamp_id => 1293173
+    end
+
+    it "converts hours to minutes" do
+      HourLog.convert_from_basecamp( @basecamp_entry )[:minutes].should == 30
+    end
+
+    it "finds people" do
+      HourLog.convert_from_basecamp( @basecamp_entry )[:agent_id].should == 5
+    end
+
+    it "converts dates to times" do
+      HourLog.convert_from_basecamp( @basecamp_entry )[:created_at].should == Time.mktime( 2008, 9, 15 )
+    end
+
+  end
 end

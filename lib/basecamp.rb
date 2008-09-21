@@ -53,6 +53,14 @@ class Basecamp
         super
       end
     end
+
+    class << self
+      def split_options(options = {})
+        return [ {}, options ] if options && options['id']
+        super
+      end
+    end
+  
   end
 
   class TodoList < Resource
