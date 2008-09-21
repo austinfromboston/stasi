@@ -4,6 +4,7 @@ class Agent < ActiveRecord::Base
   has_and_belongs_to_many :tickets
 
   belongs_to :help_staffer
+
   def display_name
     name
   end

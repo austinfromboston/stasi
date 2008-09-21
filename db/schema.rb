@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080804043544) do
+ActiveRecord::Schema.define(:version => 20080921001617) do
 
   create_table "agents", :force => true do |t|
     t.string  "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20080804043544) do
     t.string  "login"
     t.integer "help_staffer_id", :limit => 11
     t.string  "cas_user"
+    t.integer "basecamp_id",     :limit => 11
   end
 
   create_table "agents_tickets", :id => false, :force => true do |t|
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20080804043544) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "preamp_hour_id", :limit => 11
+    t.integer  "basecamp_id",    :limit => 11
   end
 
   create_table "projects", :force => true do |t|
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20080804043544) do
     t.string   "status"
     t.string   "preamp_status"
     t.integer  "preamp_client_id", :limit => 11
+    t.integer  "basecamp_id",      :limit => 11
   end
 
   create_table "ticket_data_imports", :force => true do |t|
