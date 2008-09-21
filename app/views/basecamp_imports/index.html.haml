@@ -1,0 +1,8 @@
+These projects are linked to Basecamp:
+%ul
+  - @projects.each do |project|
+    %li
+      = project.display_name
+
+- form_for :basecamp_update, :url => basecamp_imports_path do |f|
+  = f.submit "Update Now"

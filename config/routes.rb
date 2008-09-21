@@ -52,6 +52,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :projects
   map.resource  :login
+  map.resources :basecamp_imports
 
   map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
 end

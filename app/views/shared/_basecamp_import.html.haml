@@ -1,0 +1,20 @@
+= link_to "Import Time from Basecamp", basecamp_imports_path, :class => 'basecamp_import'
+.hidden
+  - form_for :basecamp_import, :url => basecamp_imports_path, :html => { :class => 'perform_basecamp_import' } do |f|
+    &nbsp;
+
+- content_for :dom_ready do
+  :plain
+    $('.basecamp_import').click( function(ev) {
+      var self = this;
+      $(this).attr('style', 'background-image: url(/images/onramp-busy.gif);');
+      $.post( 
+        $('.perform_basecamp_import').attr('action'), 
+        $('.perform_basecamp_import:eq(0)').serialize(), 
+        function(response) { 
+          $(self).attr('style', '');
+          RD.notify( 'Imported ' + response.length + ' log entries from Basecamp'); 
+        }, 
+        'json' );
+      return false;
+    });
