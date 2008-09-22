@@ -50,7 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/hour_logs/monthly/:month/:year', :controller => 'monthly', :action => 'index'
   map.connect '/hour_logs/monthly/:month/:year.:format', :controller => 'monthly', :action => 'index', :defaults => { :format => :html }
 
-  map.resources :projects
+  map.resources :projects, :has_many => :hour_logs
   map.resource  :login
   map.resources :basecamp_imports
 

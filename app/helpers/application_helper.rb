@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def months
-    (1..12).map { |mm| [ Time.mktime( 2008, mm, 1 ).strftime('%B'), mm.to_s ] }
+    (1..12).map { |mm| Time.mktime( 2008, mm, 1 ).strftime('%B-%m').split('-')  }
   end
 
   def recent_years

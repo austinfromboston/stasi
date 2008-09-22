@@ -2,6 +2,7 @@
   .standard.span-16
     %h3
       = header
+    = link_to "Download PDF", formatted_project_hour_logs_path( current_view_dates.merge( :project_id => hour_log.project_id, :format => :pdf ) )
 .standard.span-16
   %li
     = render :partial => 'hour_logs/hour_log', :object => hour_log
