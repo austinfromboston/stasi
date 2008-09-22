@@ -73,7 +73,3 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-require 'casclient'
-require 'casclient/frameworks/rails/filter'
-
-CASClient::Frameworks::Rails::Filter.configure :cas_base_url => "https://local-rubycas.org/cas"
