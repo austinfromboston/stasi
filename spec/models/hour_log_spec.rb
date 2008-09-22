@@ -26,7 +26,7 @@ describe HourLog do
 
   describe "conversion from basecamp" do
     before do
-      @basecamp_entry = Basecamp::TimeEntry.new "date"=> Time.mktime( 2008, 9, 15).to_date, "id"=>10471220, "description"=>nil, "hours"=>0.5, "person_id"=>1293173
+      @basecamp_entry = Basecamp::TimeEntry.new "date"=> Time.mktime( 2008, 9, 15).to_date, "id"=>10471220, "description"=>nil, "hours"=>0.5, "person_id"=>1293173, 'todo_item_id' => nil
       Agent.delete_all
       create_agent :id => 5, :basecamp_id => 1293173
     end
