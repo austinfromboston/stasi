@@ -39,8 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect ':controller/:action/:id'
   #map.connect ':controller/:action/:id.:format'
   map.resources :ticket_data_imports
-  map.root :ticket_data_imports
-
+  #map.root :ticket_data_imports
   map.resources :agents
   map.resources :contacts do |contact|
     contact.resources :involvements
@@ -53,6 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects, :has_many => :hour_logs
   map.resource  :login
   map.resources :basecamp_imports
+  map.root :projects
+
 
   map.cas_proxy_callback 'cas_proxy_callback/:action', :controller => 'cas_proxy_callback'
 end
