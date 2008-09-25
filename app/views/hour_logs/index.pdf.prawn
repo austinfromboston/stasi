@@ -15,10 +15,10 @@ pdf.bounding_box [ pdf.margin_box.left + 50, 620 ] do
   end
 
   pdf.text_options.update :size => 10
-  pdf.table tasks.map { |t| [ t[:description].split("\n")[0], t[:description].sub(/^.*\n/, ''), to_hours(t[:minutes]) ] }, 
-      :headers => [ 'task', 'notes', 'hours' ],
-      :widths  => { 0 => 200, 1 => 200, 2 => 50 },
-      :vertical_padding => 2
+  pdf.table tasks.map { |t| [ t[:story], t[:description], to_hours(t[:minutes]) ] }, 
+      :headers => [ 'story', 'tasks', 'hours' ],
+      :widths  => { 0 => 200, 1 => 200, 2 => 50 }
+      #:vertical_padding => 2
   total_hours = to_hours( tasks.inject(0) { |total, t| total += t[:minutes] })
   pdf.table [[ "TOTAL", total_hours ]],
       :widths  => { 0 => 400, 1 => 50 }

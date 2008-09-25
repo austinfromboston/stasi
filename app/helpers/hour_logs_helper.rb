@@ -18,6 +18,15 @@ module HourLogsHelper
       end
       tasks
     end
-    tasks.sort { |a, b| b[:minutes] <=> a[:minutes] }
+    tasks.sort! { |a, b| a[:description] <=> b[:description] }
+    stories = tasks.inject({}) do |compressed_tasks, current|
+      task_header = current[:description].split("\n")[0]
+      compressed_tasks[task_header] ||= { :story => task_header, :description => '', :minutes => 0.to_f }
+      details = current[:description].split("\n")[1..-1]
+      compressed_tasks[task_header][:description] +=  "; " + details.delete_if(&:blank?).join("; ") unless details.empty?
+      compressed_tasks[task_header][:minutes] += current[:minutes]
+      compressed_tasks
+    end
+    stories.values.map { |v| v[:description] = v[:description][2...-1]; v }
   end
 end

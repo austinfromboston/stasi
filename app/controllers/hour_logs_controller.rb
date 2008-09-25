@@ -7,6 +7,7 @@ class HourLogsController < ApplicationController
     response_for :index do |format|
       format.html {}
       format.pdf  do 
+        @hour_logs = current_search.all
         self.class.layout nil
         #prawnto :filename => "#{@project.display_name.underscore}
         prawnto :filename => "#{@project.display_name.downcase.gsub(/\s/,'_')}_hours_report_#{Time.now.year}_#{Time.now.month}_#{Time.now.day}.pdf"
