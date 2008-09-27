@@ -5,6 +5,10 @@ class ContactsController < ApplicationController
       format.html { redirect_to contacts_path }
       format.json { head :ok }
     end
+    response_for :index do |format|
+      format.html { }
+      format.xml { render :xml => current_objects }
+    end
 
   end
 

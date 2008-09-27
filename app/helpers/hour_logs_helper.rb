@@ -27,6 +27,6 @@ module HourLogsHelper
       compressed_tasks[task_header][:minutes] += current[:minutes]
       compressed_tasks
     end
-    stories.values.map { |v| v[:description] = v[:description][2...-1]; v }
+    stories.values.each { |v| v[:description].gsub!(/^; /,'') }
   end
 end
