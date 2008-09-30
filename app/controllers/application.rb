@@ -27,24 +27,16 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   #
+  include RadicalDesigns::LineinAccessible
   def current_user
     @user ||= Agent.find_by_cas_user(session[:cas_user])
-  end
-
-  def api_request?
-    request.request_uri =~ /^\/api/ 
   end
 
   def api_authenticate
     return true unless api_request?
     authenticate_or_request_with_http_basic do |user_name, password|
-      @user = Agent.find_by_cas_user( user_name ) 
+      @user = Agent.find_by_cas_user( user_name ) if password == Linein::API_ACCESS_KEY
     end
-  end
-
-  def cas_authenticate
-    return true if current_user
-    CASClient::Frameworks::Rails::Filter.filter(self)
   end
 
   def login_required
