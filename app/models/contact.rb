@@ -6,9 +6,14 @@ class Contact < ActiveRecord::Base
 
   named_scope :unassigned, :conditions => [ 'project_id is ?', nil ]
   before_destroy ContactGrudgeRecorder
+  LINEIN_ATTRIBUTES = %w/ name first_name last_name email phone billable /
 
   def display_name
     name
+  end
+
+  def linein_attributes
+    attributes.slice *LINEIN_ATTRIBUTES
   end
 
   def update_project_hour_logs

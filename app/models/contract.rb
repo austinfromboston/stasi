@@ -1,6 +1,20 @@
 class Contract < ActiveRecord::Base
   establish_connection
   belongs_to :project
+  LINEIN_ATTRIBUTES = [
+    [:hourly_rate,      :hourly_rate      ],
+    [:billable_status,  :status           ],
+    [:monthly_fee,      :monthly_retainer ],
+    [:hours_included,   :monthly_support_hours ]
+  ]
+
+  def linein_attributes
+    LINEIN_ATTRIBUTES.inject({ :project_id => (project && project.linein_project_id) }) do |attrs, (linein_attr, my_attr)|
+      attrs[linein_attr] = send(my_attr)
+      attrs
+    end
+    
+  end
 
   def assign_charges( hour_logs )
     total_minutes = 0
