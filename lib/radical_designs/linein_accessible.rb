@@ -1,6 +1,6 @@
 module RadicalDesigns::LineinAccessible
   def current_user
-    @user_name = session[:cas_user]
+    @user_name ||= session[:cas_user] unless session[:cas_user].blank?
   end
 
   def api_request?
@@ -10,7 +10,7 @@ module RadicalDesigns::LineinAccessible
   def api_authenticate
     return true unless api_request?
     authenticate_or_request_with_http_basic do |user_name, password|
-      @user_name = user_name if password == Linein::API_ACCESS_KEY
+      @user_name = user_name if !password.blank? and password == Linein::API_ACCESS_KEY
     end
   end
 
