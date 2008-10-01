@@ -22,6 +22,9 @@ after "deploy:update_code", "deploy:symlink_shared"
 
 namespace :deploy do
   task :symlink_shared, :roles => :app, :except => {:no_symlink => true} do
+    invoke_command "ln -nfs #{shared_path}/config/auth_server.yml #{release_path}/config/auth_server.yml"
+    invoke_command "ln -nfs #{shared_path}/config/linein.yml #{release_path}/config/linein.yml"
+    invoke_command "ln -nfs #{shared_path}/config/basecamp.yml #{release_path}/config/basecamp.yml"
     invoke_command "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     invoke_command "ln -nfs #{shared_path}/config/mongrel_cluster.yml #{release_path}/config/mongrel_cluster.yml"
     invoke_command "ln -nfs #{shared_path}/config/contact_grudges_development.yml #{release_path}/config/contact_grudges_development.yml"
