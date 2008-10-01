@@ -7,8 +7,14 @@ class Project < ActiveRecord::Base
   attr_accessor :contact_data
   attr_accessor :contract_data
 
+  LINEIN_ATTRIBUTES = %w/ name url status /
+
   def display_name
     name || organization.to_s[0..40]
+  end
+
+  def linein_attributes
+    attributes.slice( *LINEIN_ATTRIBUTES ).merge( :name => display_name )
   end
 
   before_save :build_contacts
