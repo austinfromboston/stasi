@@ -28,8 +28,8 @@ namespace :deploy do
     invoke_command "ln -nfs #{shared_path}/config/basecamp.yml #{release_path}/config/basecamp.yml"
     invoke_command "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     invoke_command "ln -nfs #{shared_path}/config/mongrel_cluster.yml #{release_path}/config/mongrel_cluster.yml"
-    invoke_command "ln -nfs #{shared_path}/config/contact_grudges_development.yml #{release_path}/config/contact_grudges_development.yml"
-    invoke_command "ln -nfs #{shared_path}/config/imported_contacts_and_projects.yml #{release_path}/config/imported_contacts_and_projects.yml"
+    invoke_command "ln -nfs #{shared_path}/config/contact_grudges_development.yaml #{release_path}/config/contact_grudges_development.yaml"
+    invoke_command "ln -nfs #{shared_path}/config/imported_contacts_and_projects.yaml #{release_path}/config/imported_contacts_and_projects.yaml"
 
     # clear stylesheets folder
     #invoke_command "rm #{release_path}/public/stylesheets/*css"
