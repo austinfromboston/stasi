@@ -29,13 +29,13 @@ class ApplicationController < ActionController::Base
   #
   include RadicalDesigns::LineinAccessible
   def current_user
-    @user ||= Agent.find_by_cas_user(session[:cas_user])
+    @user ||= !session[:cas_user].blank? && Agent.find_by_cas_user(session[:cas_user])
   end
 
   def api_authenticate
     return true unless api_request?
     authenticate_or_request_with_http_basic do |user_name, password|
-      @user = Agent.find_by_cas_user( user_name ) if password == Linein::API_ACCESS_KEY
+      @user = Agent.find_by_cas_user( user_name ) if ( password == Linein::API_ACCESS_KEY ) and !password.blank?
     end
   end
 
