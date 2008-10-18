@@ -15,7 +15,7 @@ class HourLog < ActiveRecord::Base
   attr_accessor :charges, :overage
 
   def display_name
-    "#{project.display_name if project} #{billing_type} : #{ agent.display_name}, #{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours"
+    "#{project.display_name if project} #{billing_type} : #{ agent.display_name if agent }, #{"%0.2f" % (minutes.minutes.to_f / 1.hour)} hours"
   end
 
   BASECAMP_CONVERSIONS = {
