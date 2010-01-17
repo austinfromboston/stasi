@@ -1,5 +1,7 @@
 class HourLogsController < ApplicationController
   make_resourceful do 
+    #publish :json, :attributes => [ 'id', 'minutes', 'project_id', 'billing_type', 'notes', 'basecamp_id' ]
+    publish :xml, :attributes => [ 'id', 'minutes', 'billing_type', 'notes', 'basecamp_id', 'linein_project_id', 'created_at' ]
     actions :all
     before :new do
       current_object.agent = current_user

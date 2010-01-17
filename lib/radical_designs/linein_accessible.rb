@@ -1,6 +1,6 @@
 module RadicalDesigns::LineinAccessible
   def current_user
-    @user_name ||= session[:cas_user] unless session[:cas_user].blank?
+    @user_name ||= ( session[:cas_user] unless session[:cas_user].blank? )
   end
 
   def api_request?

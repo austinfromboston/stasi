@@ -8,4 +8,9 @@ namespace :linein do
     @conn = RadicalDesigns::LineinConnection.new 
     @conn.transfer
   end
+  task :update_hours do
+    @conn = RadicalDesigns::LineinConnection.new 
+    @conn.assign_hours_to_contracts
+    @conn.create_line_items
+  end
 end

@@ -1,3 +1,6 @@
-== Stasi keeps an eye on us all
+Stasi keeps an eye on us all
+----------------------------
 
 The goal of Stasi is to combine and audit multiple data streams and create a comprehensive report of billable employee activity.
+
+The data from this service is supplied to the Aquarius data network.

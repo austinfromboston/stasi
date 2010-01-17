@@ -3,6 +3,7 @@ class HourLog < ActiveRecord::Base
   belongs_to :project
   belongs_to :ticket
   belongs_to :help_hour, :foreign_key => 'timetrackid'
+  belongs_to :contract, :class_name => "Linein::Contract"
   establish_connection
   cattr_reader :per_page
   @@per_page = 50
@@ -53,6 +54,21 @@ class HourLog < ActiveRecord::Base
         end
       ]
     end.flatten]
+  end
+  def linein_project_id
+    project.linein_project_id
+  end
+
+  def to_line_item
+    note_lines = notes.split("\n")
+    { :amount           => minutes.to_f / 60 * contract.hourly_rate,
+      :story_header     => note_lines.shift,
+      :description      => note_lines.join("\n"),
+      :contract_id      => contract_id,
+      :billable_status  => 'billable',
+      :adjustment_type  => 'charge',
+      :source_id        => id,
+      :source_type      => 'stasi_hour_log' }
   end
       
 

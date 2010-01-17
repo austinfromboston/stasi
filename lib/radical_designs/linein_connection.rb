@@ -47,5 +47,19 @@ module RadicalDesigns
         end
       end
     end
+    def assign_hours_to_contracts
+      HourLog.all.each do |hl|
+        unless hl.contract_id
+          if hl.project
+            hl.update_attribute :contract_id, hl.project.contracts.first.linein_contract_id
+          end
+        end
+      end
+    end
+    def create_line_items
+      HourLog.all.each do |hl|
+        Linein::LineItem.create_from_hour_log( hl )
+      end
+    end
   end
 end
